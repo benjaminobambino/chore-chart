@@ -34,7 +34,7 @@
 #### Entity Relationship Diagram
 ![Entity Relationship Diagram](diagrams/erd-dark-1.png)
 #### Component Hierarchy Diagram
-![Component Hierarchy Diagram](diagrams/component-hierarchy-diagram-dark.png)
+![Component Hierarchy Diagram](diagrams/component-hierarchy-diagram-dark-2.png)
 <!-- #### Submit New Jokes
 ![Submit New Jokes](screenshots/new-joke.png) -->
 ***
