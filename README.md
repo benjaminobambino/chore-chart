@@ -39,13 +39,13 @@
 ![Submit New Jokes](screenshots/new-joke.png) -->
 ***
 ### ***Future Updates***
-- [ ] Add user's liked jokes component
-- [ ] Add joke flagging functionality
-- [ ] Add functionality to minimize or eliminate repeated jokes
-- [ ] Add joke search feature
-- [ ] Add user's contributed jokes component
-- [ ] Mobile-friendly design
-- [ ] Add joke categories
+- [ ] JWT Authentication
+- [ ] Recurring chores feature
+- [ ] 3rd party API for inspirational quotes
+- [ ] Chore point value and weekly winner
+- [ ] Message board
+- [ ] Dark mode
+- [ ] OAuth
 <!-- *** -->
 <!-- ### ***Credits***
 
