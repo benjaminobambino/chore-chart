@@ -1,0 +1,3 @@
+CREATE DATABASE chore;
+CREATE USER choreuser WITH PASSWORD 'secretchore';
+GRANT ALL PRIVILEGES ON DATABASE chore TO choreuser;
