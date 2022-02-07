@@ -11,7 +11,6 @@ class User(models.Model):
   household = models.ForeignKey(Household, on_delete=models.CASCADE, related_name='users')
   username = models.CharField(max_length=100)
   email = models.EmailField()
-  password_digest = models.CharField(max_length=100)
   admin = models.BooleanField()
   image = models.TextField()
 
