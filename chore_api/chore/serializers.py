@@ -21,6 +21,7 @@ class ChoreSerializer(serializers.HyperlinkedModelSerializer):
 
   doer_id = serializers.PrimaryKeyRelatedField(
     required = False,
+    allow_null = True,
     queryset = User.objects.all(),
     source = 'doer'
   )
