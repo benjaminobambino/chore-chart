@@ -1,26 +1,34 @@
 import './styles/App.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Route, Switch } from 'react-router-dom';
+import Header from './misc/Header';
 import Chores from './chores/Chores';
+import About from './misc/About';
 
 function App() {
-  // const [household, setHousehold] = useState({});
+  const [household, setHousehold] = useState({});
 
-  // const getHousehold = async () => {
-  //   const res = await axios.get(`http://localhost:8000/households/1`);
-  //   setHousehold(res.data);
-  // };
+  const getHousehold = async () => {
+    const res = await axios.get(`http://localhost:8000/households/1`);
+    setHousehold(res.data);
+  };
 
-  // useEffect(() => {
-  //   getHousehold();
-  // }, []);
+  useEffect(() => {
+    getHousehold();
+  }, []);
 
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Chore Chart</h1>
-        <Chores />
+        <Header />
       </header>
+      <main>
+        <Switch>
+          <Chores path="/" />
+          <About path="/about" />
+        </Switch>
+      </main>
     </div>
   );
 }
