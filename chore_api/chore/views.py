@@ -1,6 +1,7 @@
 from rest_framework import generics
 from .serializers import HouseholdSerializer, UserSerializer, ChoreSerializer
 from .models import Household, User, Chore
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 class HouseholdList(generics.ListCreateAPIView):
