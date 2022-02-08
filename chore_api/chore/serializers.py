@@ -30,5 +30,30 @@ class ChoreSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
     model = Chore
     fields = ('id', 'name', 'notes', 'priority', 'done', 'household', 'household_id', 'doer', 'doer_id', 'chore_url')
-    
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+  household = serializers.HyperlinkedRelatedField(
+    view_name = 'household_detail',
+    read_only = True
+  )
+
+  household_id = serializers.PrimaryKeyRelatedField(
+    queryset = Household.objects.all(),
+    source = 'household'
+  )
+
+  chores = serializers.HyperlinkedRelatedField(
+    view_name = 'chore_detail',
+    many = True,
+    read_only = True
+  )
+
+  user_url = serializers.ModelSerializer.serializer_url_field(
+    view_name = 'user_details'
+  )
+
+  class Meta:
+    model = User
+    fields = ('id', 'username', 'email', 'admin', 'image', 'user_url', 'household', 'household_id', 'chores')
+
 # class HouseholdSerializer(serializers.HyperlinkedModelSerializer):
