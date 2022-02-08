@@ -41,7 +41,10 @@ INSTALLED_APPS = [
     'chore',
     'rest_framework',
     'corsheaders',
+    'accounts',
 ]
+
+LOGIN_REDIRECT_URL = '/'
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
