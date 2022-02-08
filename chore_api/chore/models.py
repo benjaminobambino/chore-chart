@@ -10,7 +10,7 @@ class Household(models.Model):
 class User(models.Model):
   household = models.ForeignKey(Household, on_delete=models.CASCADE, related_name='users')
   username = models.CharField(max_length=100)
-  email = models.EmailField()
+  email = models.EmailField(unique=True)
   admin = models.BooleanField()
   image = models.TextField()
 

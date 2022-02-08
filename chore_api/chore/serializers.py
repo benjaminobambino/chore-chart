@@ -64,24 +64,10 @@ class HouseholdSerializer(serializers.HyperlinkedModelSerializer):
     read_only = True
   )
 
-## I don't think I'll need the urls because they should be included in the above serializer
-  # user_urls = serializers.HyperlinkedRelatedField(
-  #   view_name = 'user_detail',
-  #   many = True,
-  #   read_only = True
-  # )
-
   chores = ChoreSerializer(
     many = True,
     read_only = True
   )
-
-## I don't think I'll need the urls because they should be included in the above serializer
-  # chore_urls = serializers.HyperlinkedRelatedField(
-  #   view_name = 'chore_detail',
-  #   many = True,
-  #   read_only = True
-  # )
 
   household_url = serializers.ModelSerializer.serializer_url_field(
     view_name = 'household_detail'
