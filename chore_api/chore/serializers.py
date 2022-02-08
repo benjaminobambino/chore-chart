@@ -85,6 +85,6 @@ class HouseholdSerializer(serializers.HyperlinkedModelSerializer):
     view_name = 'household_detail'
   )
 
-  class Mega:
+  class Meta:
     model = Household
     fields = ('id', 'name', 'household_url', 'users', 'chores')
