@@ -14,11 +14,13 @@ class ChoreSerializer(serializers.HyperlinkedModelSerializer):
   )
 
   doer = serializers.HyperlinkedRelatedField(
+    required = False,
     view_name = 'user_detail',
-    read_only = True
+    read_only = True,
   )
 
   doer_id = serializers.PrimaryKeyRelatedField(
+    required = False,
     queryset = User.objects.all(),
     source = 'user'
   )
