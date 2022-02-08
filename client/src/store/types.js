@@ -5,6 +5,7 @@ export const EDIT_HOUSEHOLD = 'EDIT_HOUSEHOLD';
 export const UPDATE_HOUSEHOLD = 'UPDATE_HOUSEHOLD';
 export const DELETE_HOUSEHOLD = 'DELETE_HOUSEHOLD';
 
+export const GET_CURRENT_USER = 'GET_CURRENT_USER';
 export const GET_USERS = 'GET_USERS';
 export const EDIT_USER = 'EDIT_USER';
 export const UPDATE_USER = 'UPDATE_USER';
