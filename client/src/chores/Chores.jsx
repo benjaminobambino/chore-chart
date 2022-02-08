@@ -3,7 +3,7 @@ import React from "react";
 const Chores = (props) => {
   return (
     <div>
-      <h3>Chores</h3>
+      <h3>{props.household.name} Chores</h3>
     </div>
   )
 }

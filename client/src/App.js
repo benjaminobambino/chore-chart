@@ -9,10 +9,14 @@ import About from './misc/About';
 
 function App() {
   const [household, setHousehold] = useState({});
+  const [user, setUser] = useState({});
+  const [chores, setChores] = useState([]);
 
   const getHousehold = async () => {
     const res = await axios.get(`http://localhost:8000/households/1`);
     setHousehold(res.data);
+    setUser(res.data.users[0]);
+    setChores(res.data.chores);
   };
 
   useEffect(() => {
@@ -26,8 +30,14 @@ function App() {
       </header>
       <main>
         <Switch>
-          <Chores exact path="/" />
-          <Profile path="/profile" />
+          <Chores
+            exact
+            path="/"
+            chores={chores}
+            user={user}
+            household={household}
+          />
+          <Profile path="/profile" user={user} />
           <About path="/about" />
         </Switch>
       </main>

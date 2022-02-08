@@ -1,10 +1,10 @@
 import React from "react";
 import ProfileCard from "./ProfileCard";
 
-const Profile = (props) => {
+const Profile = ({ user }) => {
   return (
     <div>
-      <h3>Profile</h3>
+      <h3>{user.username}'s Profile</h3>
       <ProfileCard />
     </div>
   )
