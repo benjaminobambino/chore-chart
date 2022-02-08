@@ -20,11 +20,19 @@ const ChoreReducer = (state = iState, action) => {
     case NEW_CHORE:
       return { ...state, newChore: action.payload };
     case ADD_CHORE:
-      return { ...state, chores: [...chores, action.payload], newChore: {} };
+      return {
+        ...state,
+        chores: [...state.chores, action.payload],
+        newChore: {}
+      };
     case EDIT_CHORE:
       return { ...state, editedChore: action.payload };
     case UPDATE_CHORE:
-      return { ...state, chores: [...chores, action.payload], editedChore: {} };
+      return {
+        ...state,
+        chores: [...state.chores, action.payload],
+        editedChore: {}
+      };
     case DELETE_CHORE:
       const newChores = [...state.chores];
       newChores.splice(parseInt(action.payload), 1);
