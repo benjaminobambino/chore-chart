@@ -4,16 +4,16 @@ import axios from 'axios';
 import Chores from './chores/Chores';
 
 function App() {
-  const [household, setHousehold] = useState({});
+  // const [household, setHousehold] = useState({});
 
-  const getHousehold = async () => {
-    const res = await axios.get(`http://localhost:8000/households/1`);
-    setHousehold(res.data);
-  };
+  // const getHousehold = async () => {
+  //   const res = await axios.get(`http://localhost:8000/households/1`);
+  //   setHousehold(res.data);
+  // };
 
-  useEffect(() => {
-    getHousehold();
-  }, []);
+  // useEffect(() => {
+  //   getHousehold();
+  // }, []);
 
   return (
     <div className="App">
