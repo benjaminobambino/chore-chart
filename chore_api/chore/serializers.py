@@ -22,7 +22,7 @@ class ChoreSerializer(serializers.HyperlinkedModelSerializer):
   doer_id = serializers.PrimaryKeyRelatedField(
     required = False,
     queryset = User.objects.all(),
-    source = 'user'
+    source = 'doer'
   )
 
   chore_url = serializers.ModelSerializer.serializer_url_field(
