@@ -49,11 +49,42 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
   )
 
   user_url = serializers.ModelSerializer.serializer_url_field(
-    view_name = 'user_details'
+    view_name = 'user_detail'
   )
 
   class Meta:
     model = User
     fields = ('id', 'username', 'email', 'admin', 'image', 'user_url', 'household', 'household_id', 'chores')
 
-# class HouseholdSerializer(serializers.HyperlinkedModelSerializer):
+class HouseholdSerializer(serializers.HyperlinkedModelSerializer):
+  users = UserSerializer(
+    many = True,
+    read_only = True
+  )
+
+## I don't think I'll need the urls because they should be included in the above serializer
+  # user_urls = serializers.HyperlinkedRelatedField(
+  #   view_name = 'user_detail',
+  #   many = True,
+  #   read_only = True
+  # )
+
+  chores = ChoreSerializer(
+    many = True,
+    read_only = True
+  )
+
+## I don't think I'll need the urls because they should be included in the above serializer
+  # chore_urls = serializers.HyperlinkedRelatedField(
+  #   view_name = 'chore_detail',
+  #   many = True,
+  #   read_only = True
+  # )
+
+  household_url = serializers.ModelSerializer.serializer_url_field(
+    view_name = 'household_detail'
+  )
+
+  class Mega:
+    model = Household
+    fields = ('id', 'name', 'household_url', 'users', 'chores')
