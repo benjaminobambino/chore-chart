@@ -1,3 +1,5 @@
+import { GetChores } from '../../services/ChoreService';
+
 import {
   GET_CHORES,
   NEW_CHORE,
@@ -7,10 +9,10 @@ import {
   DELETE_CHORE
 } from '../types';
 
-export const LoadChores = () => {
+export const LoadChores = (householdId) => {
   return async (dispatch) => {
     try {
-      const chores = await GetChores();
+      const chores = await GetChores(householdId);
       dispatch({
         type: GET_CHORES,
         payload: chores
@@ -20,6 +22,7 @@ export const LoadChores = () => {
     }
   };
 };
+
 export const AddChore = (chore) => ({
   type: ADD_CHORE,
   payload: chore
