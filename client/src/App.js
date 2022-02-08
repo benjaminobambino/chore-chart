@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Route, Switch } from 'react-router-dom';
 import Header from './misc/Header';
 import Chores from './chores/Chores';
+import Profile from './profile/Profile';
 import About from './misc/About';
 
 function App() {
@@ -25,7 +26,8 @@ function App() {
       </header>
       <main>
         <Switch>
-          <Chores path="/" />
+          <Chores exact path="/" />
+          <Profile path="/profile" />
           <About path="/about" />
         </Switch>
       </main>
