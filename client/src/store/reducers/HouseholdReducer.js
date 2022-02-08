@@ -20,11 +20,15 @@ const HouseholdReducer = (state = iState, action) => {
     case NEW_HOUSEHOLD:
       return { ...state, newHousehold: action.payload };
     case ADD_HOUSEHOLD:
-      return { ...state, currentHousehold: action.payload };
+      return { ...state, currentHousehold: action.payload, newHousehold: {} };
     case EDIT_HOUSEHOLD:
       return { ...state, editedHousehold: action.payload };
     case UPDATE_HOUSEHOLD:
-      return { ...state, currentHousehold: action.payload };
+      return {
+        ...state,
+        currentHousehold: action.payload,
+        editedHousehold: {}
+      };
     case DELETE_HOUSEHOLD:
       return { ...state, currentHousehold: {} };
     default:

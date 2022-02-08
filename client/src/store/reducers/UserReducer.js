@@ -21,11 +21,11 @@ const UserReducer = (state = iState, action) => {
     case EDIT_USER:
       return { ...state, editedUser: action.payload };
     case UPDATE_USER:
-      return { ...state, currentUser: action.payload };
+      return { ...state, currentUser: action.payload, editedUser: {} };
     case DELETE_USER:
-      const users = [...state.users];
-      users.splice(parseInt(action.payload), 1);
-      return { ...state, currentUser: {} };
+      const updatedUsers = [...state.users];
+      updatedUsers.splice(parseInt(action.payload), 1);
+      return { ...state, users: updatedUsers, currentUser: {} };
     default:
       return { ...state };
   }
