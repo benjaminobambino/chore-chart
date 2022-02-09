@@ -7,13 +7,17 @@ const UnclaimedChores = (props) => {
   return (
     <div>
       <h3>Unclaimed Chores</h3>
-      {unclaimedChores.map((chore) => {
-        return (
-          <div key={chore.id}>
-            <ChoreCard chore={chore} />
-          </div>
-        )
-      })}
+      { unclaimedChores.length ?
+        unclaimedChores.map((chore) => {
+          return (
+            <div key={chore.id}>
+              <ChoreCard chore={chore} />
+            </div>
+          )
+        })
+        :
+        <p>No unclaimed chores. Great teamwork!</p>
+      }
     </div>
   )
 }
