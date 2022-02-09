@@ -11,7 +11,7 @@ const Profile = ({ user }) => {
 
   return (
     <div>
-      <h3>{user.username}&rsquo;s Profile</h3>
+      <h2>{user.username}&rsquo;s Profile</h2>
       { editing ?
         <ProfileCard toggleEditing={toggleEditing} />
         :

@@ -7,11 +7,11 @@ import ChoreCreateForm from "./ChoreCreateForm";
 const Chores = (props) => {
   return (
     <div>
-      <h3>{props.household.name} Chores</h3>
-      <MyChores />
-      <UnclaimedChores />
-      <AllChores householdName={props.household.name} />
-      <ChoreCreateForm />
+      <h2>{props.household.name} Chores</h2>
+      <MyChores chores={props.chores} user={props.user} />
+      <UnclaimedChores chores={props.chores} />
+      <AllChores householdName={props.household.name} chores={props.chores} />
+      <ChoreCreateForm chores={props.chores} />
     </div>
   )
 }
