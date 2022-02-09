@@ -8,10 +8,10 @@ const Chores = (props) => {
   return (
     <div>
       <h2>{props.household.name} Chores</h2>
-      <MyChores chores={props.chores} user={props.user} />
-      <UnclaimedChores chores={props.chores} user={props.user} />
-      <AllChores householdName={props.household.name} chores={props.chores} user={props.user} />
-      <ChoreCreateForm chores={props.chores} user={props.user} />
+      <MyChores chores={props.chores} user={props.user} getHousehold={props.getHousehold} />
+      <UnclaimedChores chores={props.chores} user={props.user} getHousehold={props.getHousehold} />
+      <AllChores householdName={props.household.name} chores={props.chores} user={props.user} getHousehold={props.getHousehold} />
+      <ChoreCreateForm chores={props.chores} user={props.user} getHousehold={props.getHousehold} />
     </div>
   )
 }
