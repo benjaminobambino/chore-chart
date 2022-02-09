@@ -11,7 +11,7 @@ const MyChores = (props) => {
         myChores.map((chore) => {
           return (
             <div key={chore.id}>
-              <ChoreCard chore={chore} />
+              <ChoreCard chore={chore} user={props.user} />
             </div>
           )
         })
