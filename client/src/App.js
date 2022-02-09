@@ -16,6 +16,9 @@ function App() {
     const res = await axios.get(`http://localhost:8000/households/1`);
     setHousehold(res.data);
     setUser(res.data.users[0]);
+    const prioritizedChores = res.data.chores.sort((a, b) => {
+      return a.priority - b.priority;
+    });
     setChores(res.data.chores);
   };
 
