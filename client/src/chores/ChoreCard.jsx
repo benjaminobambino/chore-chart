@@ -83,17 +83,20 @@ const ChoreCard = ({ chore, user, getHousehold }) => {
 
   const deleteChore = async (choreId) => {
     if (user.admin) {
-      await axios
-        .delete(`${BASE_URL}/chores/${choreId}`,
-          {
-            auth: {
-              username: authUser,
-              password: authPassword
-            }
+      const confirm = window.confirm(`Are you sure you want to delete the chore ${chore.name}?`)
+      if(confirm) {
+        await axios
+          .delete(`${BASE_URL}/chores/${choreId}`,
+            {
+              auth: {
+                username: authUser,
+                password: authPassword
+              }
+            })
+          .then(() => {
+            getHousehold()
           })
-        .then(() => {
-          getHousehold()
-        })
+        }
     }
   }
 
