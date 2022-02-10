@@ -11,7 +11,7 @@ const Chores = (props) => {
       <MyChores chores={props.chores} user={props.user} getHousehold={props.getHousehold} />
       <UnclaimedChores chores={props.chores} user={props.user} getHousehold={props.getHousehold} />
       <AllChores householdName={props.household.name} chores={props.chores} user={props.user} getHousehold={props.getHousehold} />
-      <ChoreCreateForm chores={props.chores} user={props.user} getHousehold={props.getHousehold} />
+      <ChoreCreateForm chores={props.chores} user={props.user} getHousehold={props.getHousehold} household={props.household} />
     </div>
   )
 }
