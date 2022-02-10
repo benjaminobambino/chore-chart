@@ -5,7 +5,7 @@ const ChoreCreateForm = (props) => {
   const [inputValue, setInputValue] = useState({
     name: '',
     notes: '',
-    priority: 0
+    priority: ''
   })
   const [displayedMessage, setDisplayedMessage] = useState('')
 
@@ -36,17 +36,19 @@ const ChoreCreateForm = (props) => {
           password: authPassword
         }
       })
+      .then(() => {
+        props.getHousehold()
+        setInputValue({
+          name: '',
+          notes: ''
+        })
+      })
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setInputValue({ ...inputValue, priority: parseInt(inputValue.priority)}) 
-    console.log(inputValue)
     addChore()
-    setInputValue({
-      name: '',
-      notes: ''
-    })
+    e.target.reset()
   }
 
   return (
@@ -76,7 +78,7 @@ const ChoreCreateForm = (props) => {
         <section className="priority dropdown-menu">
           <label htmlFor="priority">Priority:</label>
           <br />
-          <select name="priority" onChange={handleDropdown} defaultValue="">
+          <select name="priority" onChange={handleDropdown}>
             <option value=""></option>
             <option value="1">High Priority</option>
             <option value="2">Medium Priority</option>
