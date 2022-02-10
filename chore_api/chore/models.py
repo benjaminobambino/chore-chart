@@ -23,7 +23,7 @@ class Chore(models.Model):
   name = models.CharField(max_length=100)
   notes = models.TextField(null=True, blank=True)
   priority = models.PositiveSmallIntegerField()
-  done = models.BooleanField()
+  done = models.BooleanField(default=False)
 
   def __str__(self):
     return self.name
