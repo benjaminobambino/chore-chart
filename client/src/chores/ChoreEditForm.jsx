@@ -50,7 +50,7 @@ const ChoreEditForm = (props) => {
   }
 
   return (
-    <div>
+    <div className="chore-card">
       <form onSubmit={handleSubmit}>
         <section className="name">
           <label htmlFor="name">Chore:</label>
