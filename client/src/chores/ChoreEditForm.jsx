@@ -15,15 +15,9 @@ const ChoreEditForm = (props) => {
     setDisplayedMessage('')
   };
 
-  const handleDropdown = (e) => {
-    setInputValue({ ...inputValue, [e.target.name]: parseInt(e.target.value) })
-    setDisplayedMessage('')
-  }
-
   const updateChore = async (choreId) => {
-    console.log({ ...inputValue })
     await axios.put(`${BASE_URL}/chores/${choreId}`,
-      { ...inputValue },
+      { ...inputValue, priority: parseInt(inputValue.priority) },
       {
         auth: {
           username: authUser,
@@ -83,9 +77,9 @@ const ChoreEditForm = (props) => {
         <section className="priority dropdown-menu">
           <label htmlFor="priority">Priority:</label>
           <br />
-          <select name="priority" onChange={handleDropdown} placeholder={toString(props.chore.priority)} >
+          <select name="priority" onChange={handleChange} placeholder={toString(props.chore.priority)} >
             <option value=""></option>
-            <option value="1">High Priority</option>
+            <option value="1" >High Priority</option>
             <option value="2">Medium Priority</option>
             <option value="3">Low Priority</option>
           </select>
