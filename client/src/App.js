@@ -12,8 +12,16 @@ function App() {
   const [user, setUser] = useState({});
   const [chores, setChores] = useState([]);
 
+  const authUser = process.env.REACT_APP_USERNAME;
+  const authPassword = process.env.REACT_APP_PASSWORD;
+
   const getHousehold = async () => {
-    const res = await axios.get(`http://localhost:8000/households/1`);
+    const res = await axios.get(`http://localhost:8000/households/1`, {
+      auth: {
+        username: authUser,
+        password: authPassword
+      }
+    });
     setHousehold(res.data);
     setUser(res.data.users[0]);
     const prioritizedChores = res.data.chores.sort((a, b) => {
