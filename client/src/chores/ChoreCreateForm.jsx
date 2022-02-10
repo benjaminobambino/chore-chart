@@ -65,7 +65,6 @@ const ChoreCreateForm = (props) => {
 
   return (
     <div>
-      <h3>Add a New Chore</h3>
       <form onSubmit={handleSubmit}>
         <section className="name">
           <label htmlFor="name">New Chore:</label>

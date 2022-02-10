@@ -6,7 +6,6 @@ const MyChores = (props) => {
 
   return (
     <div>
-      <h3>My Chores</h3>
       { myChores.length ?
         myChores.map((chore) => {
           return (

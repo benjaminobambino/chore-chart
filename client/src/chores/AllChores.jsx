@@ -4,7 +4,6 @@ import ChoreCard from "./ChoreCard";
 const AllChores = (props) => {
   return (
     <div>
-      <h3>All {props.householdName} Chores</h3>
       { props.chores.length ?
         props.chores.map((chore) => {
           return (
