@@ -4,8 +4,7 @@ import React, { useState } from "react";
 const ChoreCreateForm = (props) => {
   const [inputValue, setInputValue] = useState({
     name: '',
-    notes: '',
-    priority: ''
+    notes: ''
   })
   const [displayedMessage, setDisplayedMessage] = useState('')
 
@@ -47,8 +46,21 @@ const ChoreCreateForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    addChore()
-    e.target.reset()
+    if (!inputValue.name.length) {
+      setDisplayedMessage('Your chore needs a name.')
+    } else if (!inputValue.priority) {
+      setDisplayedMessage('Your chore needs a priority level.')
+    } else {
+      addChore()
+      e.target.reset()
+    }
+  }
+
+  const clearForm = () => {
+    setInputValue({
+      name: '',
+      notes: ''})
+    setDisplayedMessage('')
   }
 
   return (
@@ -85,8 +97,9 @@ const ChoreCreateForm = (props) => {
             <option value="3">Low Priority</option>
           </select>
         </section>
-        <button type="reset">Clear</button>
+        <button type="reset" onClick={clearForm}>Clear</button>
         <button type="submit">Submit</button>
+        <h5>{displayedMessage}</h5>
       </form>
     </div>
   )
