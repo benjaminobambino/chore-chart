@@ -1,6 +1,6 @@
 from rest_framework import generics
-from .serializers import HouseholdSerializer, UserSerializer, ChoreSerializer
-from .models import Household, User, Chore
+from .serializers import HouseholdSerializer, ChoreSerializer
+from .models import Household, Chore
 from rest_framework.permissions import IsAdminUser
 
 # Create your views here.
@@ -14,15 +14,15 @@ class HouseholdDetail(generics.RetrieveUpdateDestroyAPIView):
   queryset = Household.objects.all()
   serializer_class = HouseholdSerializer
 
-class UserList(generics.ListCreateAPIView):
-  permissions = [IsAdminUser]
-  queryset = User.objects.all()
-  serializer_class = UserSerializer
+# class UserList(generics.ListCreateAPIView):
+#   permissions = [IsAdminUser]
+#   queryset = User.objects.all()
+#   serializer_class = UserSerializer
 
-class UserDetail(generics.RetrieveUpdateDestroyAPIView):
-  permissions = [IsAdminUser]
-  queryset = User.objects.all()
-  serializer_class = UserSerializer
+# class UserDetail(generics.RetrieveUpdateDestroyAPIView):
+#   permissions = [IsAdminUser]
+#   queryset = User.objects.all()
+#   serializer_class = UserSerializer
 
 class ChoreList(generics.ListCreateAPIView):
   permissions = [IsAdminUser]
