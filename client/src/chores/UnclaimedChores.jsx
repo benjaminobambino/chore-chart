@@ -6,7 +6,6 @@ const UnclaimedChores = (props) => {
 
   return (
     <div>
-      <h3>Unclaimed Chores</h3>
       { unclaimedChores.length ?
         unclaimedChores.map((chore) => {
           return (

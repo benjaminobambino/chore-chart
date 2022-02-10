@@ -1,16 +1,7 @@
+/* default React styles */
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -24,15 +15,52 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* accordion styles */
+
+.accordion-sign {
+  font-size: 25px;
+  margin-right: 10vw;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+
+  cursor: pointer;
+  padding: 2vh 2vw;
+  margin: 2vh 5vw;
+  border: 2px solid rgb(133, 133, 133);
+  background-color: rgb(7, 92, 126);
+}
+.accordion-body {
+  padding: 15px 5px;
+  margin: -2vh 5vw;
+}
+
+/* .accordion-title {
+  text-align: center;
+} */
+
+.chore-card {
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid black;
+  margin-bottom: 2vh; 
+}
+
+.chore-card-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.chore-card-header input {
+  margin-right: 2vw;
+}
+
+.chore-card-buttons {
+  margin-bottom: 2vh;
 }

@@ -134,7 +134,7 @@ DATABASES = {
         'NAME': 'chore',
         'USER': 'choreuser',
         'PASSWORD': 'secretchore',
-        'HOST': 'localhost'
+        'HOST': 'localhost',
     }
 }
 

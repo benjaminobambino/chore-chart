@@ -18,11 +18,6 @@ const ChoreCreateForm = (props) => {
     setDisplayedMessage('')
   };
 
-  const handleDropdown = (e) => {
-    setInputValue({ ...inputValue, [e.target.name]: parseInt(e.target.value) })
-    setDisplayedMessage('')
-  }
-
   const addChore = async () => {
     await axios.post(`${BASE_URL}/chores/`,
       { ...inputValue, 
@@ -37,6 +32,7 @@ const ChoreCreateForm = (props) => {
       })
       .then(() => {
         props.getHousehold()
+        setDisplayedMessage(`\u201C${inputValue.name}\u201D has been added!`)
         setInputValue({
           name: '',
           notes: ''
@@ -65,7 +61,6 @@ const ChoreCreateForm = (props) => {
 
   return (
     <div>
-      <h3>Add a New Chore</h3>
       <form onSubmit={handleSubmit}>
         <section className="name">
           <label htmlFor="name">New Chore:</label>
@@ -90,7 +85,7 @@ const ChoreCreateForm = (props) => {
         <section className="priority dropdown-menu">
           <label htmlFor="priority">Priority:</label>
           <br />
-          <select name="priority" onChange={handleDropdown}>
+          <select name="priority" onChange={handleChange}>
             <option value=""></option>
             <option value="1">High Priority</option>
             <option value="2">Medium Priority</option>

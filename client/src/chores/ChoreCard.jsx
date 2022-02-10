@@ -1,7 +1,10 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
+import ChoreEditForm from './ChoreEditForm'
 
 const ChoreCard = ({ chore, user, getHousehold }) => {
+  const [editing, setEditing] = useState(false)
+
   const BASE_URL = process.env.REACT_APP_BASE_URL
   // change creds once auth is implemented
   const authUser = process.env.REACT_APP_USERNAME
@@ -100,17 +103,31 @@ const ChoreCard = ({ chore, user, getHousehold }) => {
     }
   }
 
-  return (
-    <div>
-      <h4>{chore.name}</h4>
-      {/* checkbox version */ mine ? <input type="checkbox" checked={complete ? true : false} onChange={()=> {markComplete(chore.id)}} /> : null }
-      {/* button version { mine ? <button className="checkbox" onClick={()=> {markComplete(chore.id)}}>{complete ? <h4>&#10003;</h4> : null }</button> : null } */}
-      <p>{chore.notes}</p>
-      <h5>{priorityMessage}</h5>
-      <button onClick={() => {claimChore(chore.id)}}>{ !claimed ? 'Claim' : 'Unclaim' } </button>
-      {user.admin ? <button onClick={() => {deleteChore(chore.id)}}>Delete</button> : null }
-    </div>
-  )
+  if (!editing) {
+
+    return (
+      <div className="chore-card">
+        <section className="chore-card-header">
+          {/* checkbox version */ mine ? <input type="checkbox" checked={complete ? true : false} onChange={()=> {markComplete(chore.id)}} /> : null }
+          {/* button version { mine ? <button className="checkbox" onClick={()=> {markComplete(chore.id)}}>{complete ? <h4>&#10003;</h4> : null }</button> : null } */}
+          <h4>{chore.name}</h4>
+        </section>
+        <p>{chore.notes}</p>
+        <h5>{priorityMessage}</h5>
+        <section className="chore-card-buttons">
+          <button onClick={() => {claimChore(chore.id)}}>{ !claimed ? 'Claim' : 'Unclaim' } </button>
+          {user.admin || mine ? <button onClick={() => {setEditing(true)}}>Edit</button> : null }
+          {user.admin ? <button onClick={() => {deleteChore(chore.id)}}>Delete</button> : null }
+        </section>
+      </div>
+    )
+  } else {
+    return (
+      <div className="chore-edit">
+        <ChoreEditForm chore={chore} user={user} getHousehold={getHousehold} editing={editing} setEditing={setEditing} />
+      </div>
+    )
+  }
 }
 
 export default ChoreCard
