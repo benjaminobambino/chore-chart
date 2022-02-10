@@ -103,14 +103,16 @@ const ChoreCard = ({ chore, user, getHousehold }) => {
   return (
     <div className="chore-card">
       <section className="chore-card-header">
-        <h4>{chore.name}</h4>
         {/* checkbox version */ mine ? <input type="checkbox" checked={complete ? true : false} onChange={()=> {markComplete(chore.id)}} /> : null }
         {/* button version { mine ? <button className="checkbox" onClick={()=> {markComplete(chore.id)}}>{complete ? <h4>&#10003;</h4> : null }</button> : null } */}
+        <h4>{chore.name}</h4>
       </section>
       <p>{chore.notes}</p>
       <h5>{priorityMessage}</h5>
-      <button onClick={() => {claimChore(chore.id)}}>{ !claimed ? 'Claim' : 'Unclaim' } </button>
-      {user.admin ? <button onClick={() => {deleteChore(chore.id)}}>Delete</button> : null }
+      <section className="chore-card-buttons">
+        <button onClick={() => {claimChore(chore.id)}}>{ !claimed ? 'Claim' : 'Unclaim' } </button>
+        {user.admin ? <button onClick={() => {deleteChore(chore.id)}}>Delete</button> : null }
+      </section>
     </div>
   )
 }
