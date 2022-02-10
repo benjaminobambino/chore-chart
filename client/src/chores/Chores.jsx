@@ -32,8 +32,8 @@ const Chores = (props) => {
     <div>
       <h2>{props.household.name} Chores</h2>
       <div className="accordion-header" onClick={showMine}>
-        <h3>My Chores</h3>
         <h3 className="accordion-sign">{show.mine ? '-' : '+' }</h3>
+        <h3 className="accordion-title">My Chores</h3>
       </div>
       {show.mine && (
         <div className="accordion-body">
@@ -41,8 +41,8 @@ const Chores = (props) => {
         </div>
       )}
       <div className="accordion-header" onClick={showUnclaimed}>
-        <h3>Unclaimed Chores</h3>
-        <h3>{show.unclaimed ? '-' : '+' }</h3>
+        <h3 className="accordion-sign">{show.unclaimed ? '-' : '+' }</h3>
+        <h3 className="accordion-title">Unclaimed Chores</h3>
       </div>
       {show.unclaimed && (
         <div className="accordion-body">
@@ -50,8 +50,8 @@ const Chores = (props) => {
         </div>
       )}
       <div className="accordion-header" onClick={showAll}>
-        <h3>All {props.household.name} Chores</h3>
-        <h3>{show.all ? '-' : '+' }</h3>
+        <h3 className="accordion-sign">{show.all ? '-' : '+' }</h3>
+        <h3 className="accordion-title">All {props.household.name} Chores</h3>
       </div>
       {show.all && (
         <div className="accordion-body">
@@ -59,8 +59,8 @@ const Chores = (props) => {
         </div>
       )}
       <div className="accordion-header" onClick={showNew}>
-        <h3>Add a New Chore</h3>
-        <h3>{show.new ? '-' : '+' }</h3>
+        <h3 className="accordion-sign">{show.new ? '-' : '+' }</h3>
+        <h3 className="accordion-title">Add a New Chore</h3>
       </div>
       {show.new && (
         <div className="accordion-body">
