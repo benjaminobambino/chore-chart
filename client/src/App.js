@@ -1,7 +1,7 @@
 import './styles/App.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import Header from './misc/Header';
 import Chores from './chores/Chores';
 import Profile from './profile/Profile';
@@ -19,7 +19,7 @@ function App() {
     const prioritizedChores = res.data.chores.sort((a, b) => {
       return a.priority - b.priority;
     });
-    setChores(res.data.chores);
+    setChores(prioritizedChores);
   };
 
   useEffect(() => {
@@ -39,8 +39,9 @@ function App() {
             chores={chores}
             user={user}
             household={household}
+            getHousehold={getHousehold}
           />
-          <Profile path="/profile" user={user} />
+          <Profile path="/profile" user={user} getHousehold={getHousehold} />
           <About path="/about" />
         </Switch>
       </main>
