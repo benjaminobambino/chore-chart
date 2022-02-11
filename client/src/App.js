@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 import Header from './misc/Header';
 import Home from './misc/Home';
 import SignUp from './authComponents/SignUp';
+import LogIn from './authComponents/LogIn';
 import Chores from './chores/Chores';
 import Profile from './profile/Profile';
 import About from './misc/About';
@@ -72,13 +73,27 @@ function App() {
             component={(props) => <Home {...props} user={user} />}
           />
           <Route path="/signup" component={SignUp} />
-          <Chores
-            exact
+          <Route
+            path="/login"
+            component={(props) => (
+              <LogIn
+                {...props}
+                setAuthenticated={setAuthenticated}
+                setUser={setUser}
+              />
+            )}
+          />
+          <Route
             path="/chores"
-            chores={chores}
-            user={user}
-            household={household}
-            getHousehold={getHousehold}
+            component={(props) => (
+              <Chores
+                {...props}
+                chores={chores}
+                user={user}
+                household={household}
+                getHousehold={getHousehold}
+              />
+            )}
           />
           <Profile path="/profile" user={user} getHousehold={getHousehold} />
           <About path="/about" />
