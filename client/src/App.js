@@ -28,7 +28,7 @@ function App() {
   const checkToken = async () => {
     const user = await CheckSession();
     setUser(user);
-    toggleAuthenticated(true);
+    setAuthenticated(true);
   };
 
   const getHousehold = async () => {
