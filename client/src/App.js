@@ -7,6 +7,7 @@ import Chores from './chores/Chores';
 import Profile from './profile/Profile';
 import About from './misc/About';
 import { CheckSession } from './services/Auth';
+import ProtectedRoute from './auth/ProtectedRoutes';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
