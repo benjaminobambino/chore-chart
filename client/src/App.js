@@ -43,7 +43,7 @@ function App() {
         <Switch>
           <Chores
             exact
-            path="/"
+            path="/chores"
             chores={chores}
             user={user}
             household={household}

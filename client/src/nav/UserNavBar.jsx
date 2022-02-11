@@ -5,7 +5,7 @@ const UserNavBar = () => {
   return (
     <nav>
       {/* <NavLink to="/">Home</NavLink> */}
-      <NavLink to="/">Chores</NavLink>
+      <NavLink to="/chores">Chores</NavLink>
       <NavLink to="/profile">Profile</NavLink>
       <NavLink to="/about">About</NavLink>
     </nav>
