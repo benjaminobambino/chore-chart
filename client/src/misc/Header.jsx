@@ -1,6 +1,6 @@
 import React from "react";
 import UserNavBar from "../nav/UserNavBar";
-import GuestNavBar from "../nav/GuestNavBar";
+import PublicNavBar from "../nav/PublicNavBar";
 
 const Header = ({ authenticated, user, handleLogout }) => {
   return (
@@ -9,7 +9,7 @@ const Header = ({ authenticated, user, handleLogout }) => {
       { authenticated && user ? 
         <UserNavBar handleLogout={handleLogout} />
         :
-        <GuestNavBar />
+        <PublicNavBar />
       }
     </div>
   )
