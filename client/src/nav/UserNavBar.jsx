@@ -8,6 +8,7 @@ const UserNavBar = () => {
       <NavLink to="/chores">Chores</NavLink>
       <NavLink to="/profile">Profile</NavLink>
       <NavLink to="/about">About</NavLink>
+      <NavLink to="/logout">Log Out</NavLink>
     </nav>
   )
 }
