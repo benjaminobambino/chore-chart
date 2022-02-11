@@ -1,13 +1,15 @@
 import './styles/App.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Header from './misc/Header';
+import Home from './misc/Home';
+import SignUp from './authComponents/SignUp';
 import Chores from './chores/Chores';
 import Profile from './profile/Profile';
 import About from './misc/About';
 import { CheckSession } from './services/Auth';
-import ProtectedRoute from './auth/ProtectedRoutes';
+import ProtectedRoute from './authComponents/ProtectedRoutes';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -64,6 +66,12 @@ function App() {
       </header>
       <main>
         <Switch>
+          <Route
+            exact
+            path="/"
+            component={(props) => <Home {...props} user={user} />}
+          />
+          <Route path="/signup" component={SignUp} />
           <Chores
             exact
             path="/chores"
