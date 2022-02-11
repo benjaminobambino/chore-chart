@@ -36,20 +36,20 @@ class CustomAccountManager(BaseUserManager):
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
 
-  email = models.EmailField(_('email address'), unique=True)
-  username = models.CharField(max_length=150, unique=True)
-  household = models.ForeignKey(Household, on_delete=models.CASCADE, related_name='users', null=True, blank=True)
-  admin = models.BooleanField(default=False)
-  image = models.TextField(null=True, blank=True)
+    email = models.EmailField(_('email address'), unique=True)
+    username = models.CharField(max_length=150, unique=True)
+    household = models.ForeignKey(Household, on_delete=models.CASCADE, related_name='users', null=True, blank=True)
+    admin = models.BooleanField(default=False)
+    image = models.TextField(null=True, blank=True)
 
-  is_staff = models.BooleanField(default=True)
-  is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True)
 
-  objects = CustomAccountManager()
+    objects = CustomAccountManager()
 
-  USERNAME_FIELD = 'email'
-  REQUIRED_FIELDS = ['username',]
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username',]
 
-  def __str__(self):
-      return self.username
-      
+    def __str__(self):
+        return self.username
+        
