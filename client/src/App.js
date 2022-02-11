@@ -6,14 +6,29 @@ import Header from './misc/Header';
 import Chores from './chores/Chores';
 import Profile from './profile/Profile';
 import About from './misc/About';
+import { CheckSession } from './services/Auth';
 
 function App() {
+  const [authenticated, setAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
   const [household, setHousehold] = useState({});
-  const [user, setUser] = useState({});
   const [chores, setChores] = useState([]);
 
   const authUser = process.env.REACT_APP_USERNAME;
   const authPassword = process.env.REACT_APP_PASSWORD;
+
+  const handleLogOut = () => {
+    //Reset all auth related state and clear localstorage
+    setUser(null);
+    setAuthenticated(false);
+    localStorage.clear();
+  };
+
+  const checkToken = async () => {
+    const user = await CheckSession();
+    setUser(user);
+    toggleAuthenticated(true);
+  };
 
   const getHousehold = async () => {
     const res = await axios.get(`http://localhost:8000/households/1`, {
@@ -31,7 +46,10 @@ function App() {
   };
 
   useEffect(() => {
-    getHousehold();
+    const token = localStorage.getItem('token');
+    if (token) {
+      checkToken();
+    }
   }, []);
 
   return (
