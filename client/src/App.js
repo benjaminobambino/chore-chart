@@ -39,8 +39,8 @@ function App() {
 
   const getProfile = async (userId) => {
     await Client.get(`/users/${userId}`).then((res) => {
-      console.log(res);
       setProfile(res.data);
+      getHousehold(1);
     });
   };
 
@@ -54,17 +54,19 @@ function App() {
       getProfile(res.data.id);
       setAuthUser(res.data);
       setAuthenticated(true);
-      // console.log(res);
     });
   };
 
-  const getHousehold = async () => {
-    const res = await axios.get(`http://localhost:8000/households/1`, {
-      // auth: {
-      //   username: authUser,
-      //   password: authPassword
-      // }
-    });
+  const getHousehold = async (householdId) => {
+    const token = localStorage.token;
+    const res = await axios.get(
+      `http://localhost:8000/households/${householdId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    );
     setHousehold(res.data);
     // setUser(res.data.users[0]);
     const prioritizedChores = res.data.chores.sort((a, b) => {
@@ -78,6 +80,7 @@ function App() {
     if (token) {
       //   checkToken();
       getUserInfo();
+      // getHousehold();
     }
   }, []);
 
