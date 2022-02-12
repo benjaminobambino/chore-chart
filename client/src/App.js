@@ -122,7 +122,7 @@ function App() {
               <HouseholdForm
                 {...props}
                 profile={profile}
-                getHousehold={getHousehold}
+                getProfile={getProfile}
               />
             )}
           />

@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { RegisterUser } from '../services/Auth';
+import axios from 'axios';
+import Client from '../services/api';
 
 const iState = {
   username: '',
   email: '',
   password: '',
-  confirmPassword: ''
+  confirmPassword: '',
+  household_id: 1
 };
 
 const SignUp = (props) => {
   const [formValues, setFormValues] = useState(iState);
+  const [householdOptions, setHouseholdOptions] = useState([])
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
@@ -17,14 +23,26 @@ const SignUp = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(parseInt(formValues.household_id))
     await RegisterUser({
       username: formValues.username,
       email: formValues.email,
-      password: formValues.password
+      password: formValues.password,
+      household_id: parseInt(formValues.household_id)
     });
     setFormValues(iState);
     props.history.push('/login');
   };
+
+  const getHouseholds = async () => {
+    await Client.get(`/households/`).then((res) => {
+      setHouseholdOptions(res.data)
+    })
+  }
+
+  useEffect(() => {
+    getHouseholds()
+  }, [])
 
   return (
     <div className="signin col">
@@ -73,6 +91,15 @@ const SignUp = (props) => {
               required
             />
           </div>
+          <section>
+            <select name="household_id" onChange={handleChange}>
+              {householdOptions.map((house) => {
+                return(
+                  <option key={house.id} value={house.id}>{house.name}</option>
+                )
+              })}
+            </select>
+          </section>
           <button
             disabled={
               !formValues.email ||
