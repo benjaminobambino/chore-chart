@@ -38,7 +38,7 @@ function App() {
         return a.priority - b.priority;
       });
       setChores(prioritizedChores);
-      history.push('/');
+      // history.push('/');
     });
   };
 

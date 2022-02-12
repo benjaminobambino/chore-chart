@@ -14,6 +14,7 @@ const LogIn = (props) => {
     .then(() => {
       setFormValues({ email: '', password: '' });
       props.getUserInfo()
+      props.history.push('/')
     })
   };
 
