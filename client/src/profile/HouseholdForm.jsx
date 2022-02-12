@@ -15,10 +15,6 @@ const HouseholdForm = (props) => {
   const assignHousehold = async (householdId) => {
     console.log(props.profile.password)
     await axios.put(`${BASE_URL}/users/${props.profile.id}`, { ...props.profile, password: props.profile.password, household_id: householdId}, {
-      // auth: {
-      //   username: 'ckp',
-      //   password: '12345678'
-      // }
     }).then(() => {
       props.getProfile(props.profile.id)
       props.history.push('/chores')

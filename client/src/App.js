@@ -79,12 +79,12 @@ function App() {
     });
   };
 
-  useEffect(() => {
+  useEffect(async () => {
     const token = localStorage.getItem('token');
     if (token) {
-      //   checkToken();
-      getUserInfo();
-      // getHousehold();
+      await CheckSession().then(() => {
+        getUserInfo();
+      });
     }
   }, []);
 
