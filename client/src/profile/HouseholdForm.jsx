@@ -14,9 +14,9 @@ const HouseholdForm = (props) => {
   };
 
   const assignHousehold = async (householdId) => {
-    await Client.patch(`/users/${props.profile.id}`, { ...props.profile, household_id: householdId}, {
+    await Client.patch(`/users/${props.user.id}`, { ...props.user, household_id: householdId}, {
     }).then(() => {
-      props.getProfile(props.profile.id)
+      props.getUser(props.user.id)
       props.history.push('/chores')
     })
   }
@@ -83,7 +83,7 @@ const HouseholdForm = (props) => {
               })}
             </select>
           </section>
-          <button type="submit">Add Household</button>
+          <button type="submit">Join Household</button>
         </form> : null}
     </div>
   )
