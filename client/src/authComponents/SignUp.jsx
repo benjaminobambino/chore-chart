@@ -13,9 +13,9 @@ const iState = {
 
 const SignUp = (props) => {
   const [formValues, setFormValues] = useState(iState);
-  const [householdOptions, setHouseholdOptions] = useState([])
+  // const [householdOptions, setHouseholdOptions] = useState([])
 
-  const BASE_URL = process.env.REACT_APP_BASE_URL
+  // const BASE_URL = process.env.REACT_APP_BASE_URL
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
@@ -34,15 +34,15 @@ const SignUp = (props) => {
     props.history.push('/login');
   };
 
-  const getHouseholds = async () => {
-    await Client.get(`/households/`).then((res) => {
-      setHouseholdOptions(res.data)
-    })
-  }
+  // const getHouseholds = async () => {
+  //   await Client.get(`/households/`).then((res) => {
+  //     setHouseholdOptions(res.data)
+  //   })
+  // }
 
-  useEffect(() => {
-    getHouseholds()
-  }, [])
+  // useEffect(() => {
+  //   getHouseholds()
+  // }, [])
 
   return (
     <div className="signin col">
@@ -91,15 +91,6 @@ const SignUp = (props) => {
               required
             />
           </div>
-          <section>
-            <select name="household_id" onChange={handleChange}>
-              {householdOptions.map((house) => {
-                return(
-                  <option key={house.id} value={house.id}>{house.name}</option>
-                )
-              })}
-            </select>
-          </section>
           <button
             disabled={
               !formValues.email ||

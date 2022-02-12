@@ -7,14 +7,12 @@ const HouseholdForm = (props) => {
     name: ''
   })
 
-  const authEmail = process.env.REACT_APP_EMAIL;
-  const authPassword = process.env.REACT_APP_PASSWORD2;
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 
   const assignHousehold = async (householdId) => {
-    console.log(props.profile.password)
-    await axios.put(`${BASE_URL}/users/${props.profile.id}`, { ...props.profile, password: props.profile.password, household_id: householdId}, {
+    console.log(householdId)
+    await Client.patch(`/users/${props.profile.id}`, { ...props.profile, household_id: householdId}, {
     }).then(() => {
       props.getProfile(props.profile.id)
       props.history.push('/chores')
@@ -40,6 +38,15 @@ const HouseholdForm = (props) => {
         <input type="text" name="name" />
         <button type="submit">Add Household</button>
       </form>
+      {/* <section>
+            <select name="household_id" onChange={handleChange}>
+              {householdOptions.map((house) => {
+                return(
+                  <option key={house.id} value={house.id}>{house.name}</option>
+                )
+              })}
+            </select>
+          </section> */}
     </div>
   )
 }
