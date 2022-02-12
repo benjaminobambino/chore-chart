@@ -29,6 +29,8 @@ function App() {
     setAuthenticated(false);
     setAuthUser(null);
     setProfile(null);
+    setHousehold({});
+    setChores([]);
     localStorage.clear();
   };
 

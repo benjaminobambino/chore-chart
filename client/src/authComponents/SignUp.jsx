@@ -13,7 +13,6 @@ const iState = {
 
 const SignUp = (props) => {
   const [formValues, setFormValues] = useState(iState);
-  // const [householdOptions, setHouseholdOptions] = useState([])
 
   // const BASE_URL = process.env.REACT_APP_BASE_URL
 
@@ -33,16 +32,6 @@ const SignUp = (props) => {
     setFormValues(iState);
     props.history.push('/login');
   };
-
-  // const getHouseholds = async () => {
-  //   await Client.get(`/households/`).then((res) => {
-  //     setHouseholdOptions(res.data)
-  //   })
-  // }
-
-  // useEffect(() => {
-  //   getHouseholds()
-  // }, [])
 
   return (
     <div className="signin col">
