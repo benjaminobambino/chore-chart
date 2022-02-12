@@ -7,7 +7,6 @@ const ChoreCreateForm = (props) => {
     notes: ''
   })
   const [displayedMessage, setDisplayedMessage] = useState('')
-  const [show, setShow] = useState(false)
 
   const BASE_URL = process.env.REACT_APP_BASE_URL
   // change creds once auth is implemented
@@ -33,17 +32,12 @@ const ChoreCreateForm = (props) => {
       })
       .then(() => {
         props.getHousehold(props.household.id)
-        setShow(true)
         setDisplayedMessage(`\u201C${inputValue.name}\u201D has been added!`)
         setInputValue({
           name: '',
           notes: ''
         })
       })
-  }
-
-  const showNew = () => {
-    setShow(!show)
   }
 
   const handleSubmit = (e) => {
@@ -65,14 +59,7 @@ const ChoreCreateForm = (props) => {
     setDisplayedMessage('')
   }
 
-  return (
-    <div>
-    <div className="accordion-header" onClick={showNew}>
-        <h3 className="accordion-sign">{show ? '-' : '+' }</h3>
-        <h3 className="accordion-title">Add a New Chore</h3>
-      </div>
-      {show && (
-        <div className="accordion-body">        
+  return (      
     <div className="chore-card">
       <form onSubmit={handleSubmit}>
         <section className="name">
@@ -109,9 +96,6 @@ const ChoreCreateForm = (props) => {
         <button type="submit">Submit</button>
         <h5>{displayedMessage}</h5>
       </form>
-    </div>
-    </div>
-      )}
     </div>
   )
 }

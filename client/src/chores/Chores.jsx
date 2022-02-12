@@ -24,9 +24,9 @@ const Chores = (props) => {
     setShow({ ...show, all: !show.all})
   }
 
-  // const showNew = () => {
-  //   setShow({ ...show, new: !show.new})
-  // }
+  const showNew = () => {
+    setShow({ ...show, new: !show.new})
+  }
 
   useEffect(() => {
     if (props.user) {
@@ -66,15 +66,15 @@ const Chores = (props) => {
           <AllChores show={show} household={props.household} chores={props.chores} user={props.user} getHousehold={props.getHousehold} />
         </div>
       )}
-      {/* <div className="accordion-header" onClick={showNew}>
+      <div className="accordion-header" onClick={showNew}>
         <h3 className="accordion-sign">{show.new ? '-' : '+' }</h3>
         <h3 className="accordion-title">Add a New Chore</h3>
       </div>
       {show.new && (
-        <div className="accordion-body"> */}
+        <div className="accordion-body">
           <ChoreCreateForm chores={props.chores} user={props.user} getHousehold={props.getHousehold} household={props.household} />
-        {/* </div>
-      )} */}
+        </div>
+      )}
     </div>
   )
 }

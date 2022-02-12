@@ -16,7 +16,7 @@ const ChoreEditForm = (props) => {
   };
 
   const updateChore = async (choreId) => {
-    await Client.put(`/chores/${choreId}`,
+    await Client.patch(`/chores/${choreId}`,
       { ...inputValue, priority: parseInt(inputValue.priority) }
       // ,
       // {

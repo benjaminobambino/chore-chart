@@ -24,10 +24,6 @@ const ChoreCard = ({ chore, user, getHousehold, household }) => {
     priorityMessage = 'Low Priority'
   }
 
-  // const updateHousehold = async () => {
-  //   await Client.
-  // }
-
   const claimChore = async (choreId) => {
     if (!mine) {
       await Client
