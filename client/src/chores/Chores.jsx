@@ -24,9 +24,9 @@ const Chores = (props) => {
     setShow({ ...show, all: !show.all})
   }
 
-  const showNew = () => {
-    setShow({ ...show, new: !show.new})
-  }
+  // const showNew = () => {
+  //   setShow({ ...show, new: !show.new})
+  // }
 
   useEffect(() => {
     if (props.user) {
@@ -45,7 +45,7 @@ const Chores = (props) => {
       </div>
       {show.mine && (
         <div className="accordion-body">
-          <MyChores chores={props.chores} user={props.user} getHousehold={props.getHousehold} household={props.household} />
+          <MyChores show={show.mine} chores={props.chores} user={props.user} getHousehold={props.getHousehold} household={props.household} />
         </div>
       )}
       <div className="accordion-header" onClick={showUnclaimed}>
@@ -54,7 +54,7 @@ const Chores = (props) => {
       </div>
       {show.unclaimed && (
         <div className="accordion-body">
-          <UnclaimedChores chores={props.chores} user={props.user} getHousehold={props.getHousehold} household={props.household} />
+          <UnclaimedChores show={show.unclaimed} chores={props.chores} user={props.user} getHousehold={props.getHousehold} household={props.household} />
         </div>
       )}
       <div className="accordion-header" onClick={showAll}>
@@ -63,18 +63,18 @@ const Chores = (props) => {
       </div>
       {show.all && (
         <div className="accordion-body">
-          <AllChores household={props.household} chores={props.chores} user={props.user} getHousehold={props.getHousehold} />
+          <AllChores show={show} household={props.household} chores={props.chores} user={props.user} getHousehold={props.getHousehold} />
         </div>
       )}
-      <div className="accordion-header" onClick={showNew}>
+      {/* <div className="accordion-header" onClick={showNew}>
         <h3 className="accordion-sign">{show.new ? '-' : '+' }</h3>
         <h3 className="accordion-title">Add a New Chore</h3>
       </div>
       {show.new && (
-        <div className="accordion-body">
+        <div className="accordion-body"> */}
           <ChoreCreateForm chores={props.chores} user={props.user} getHousehold={props.getHousehold} household={props.household} />
-        </div>
-      )}
+        {/* </div>
+      )} */}
     </div>
   )
 }

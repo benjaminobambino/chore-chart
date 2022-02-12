@@ -27,9 +27,8 @@ const ChoreEditForm = (props) => {
       // }
       )
       .then(() => {
-        console.log(props.household)
-        // props.getHousehold(props.household.id)
-        // props.setEditing(false)
+        props.getHousehold(props.household.id)
+        props.setEditing(false)
 
       })
   }

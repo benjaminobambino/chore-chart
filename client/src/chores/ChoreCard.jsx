@@ -24,6 +24,10 @@ const ChoreCard = ({ chore, user, getHousehold, household }) => {
     priorityMessage = 'Low Priority'
   }
 
+  // const updateHousehold = async () => {
+  //   await Client.
+  // }
+
   const claimChore = async (choreId) => {
     if (!mine) {
       await Client
@@ -63,8 +67,10 @@ const ChoreCard = ({ chore, user, getHousehold, household }) => {
   const markComplete = async (choreId) => {
     if (!complete) {
       await Client
-        .put(`/chores/${choreId}`,
-          { ...chore, done: true }
+        .patch(`/chores/${choreId}`,
+          { 
+            // ...chore, 
+            done: true }
           // ,
           // {
           //   auth: {
@@ -78,7 +84,7 @@ const ChoreCard = ({ chore, user, getHousehold, household }) => {
         })
     } else {
       await Client
-        .put(`/chores/${choreId}`,
+        .patch(`/chores/${choreId}`,
           { ...chore, done: false }
           // ,
           // {

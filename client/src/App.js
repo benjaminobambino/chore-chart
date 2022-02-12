@@ -111,7 +111,7 @@ function App() {
           />
           <Route
             path="/chores"
-            component={(props) => (
+            render={(props) => (
               <Chores
                 {...props}
                 chores={chores}
