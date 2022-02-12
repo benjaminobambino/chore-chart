@@ -10,11 +10,15 @@ const LogIn = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const payload = await LogInUser(formValues);
-    setFormValues({ email: '', password: '' });
-    props.setUser(payload);
-    props.setAuthenticated(true);
-    props.history.push('/chores');
+    // const payload = 
+    await LogInUser(formValues)
+    .then(() => {
+      props.getUserInfo()
+      setFormValues({ email: '', password: '' });
+      // props.setAuthUser(payload);
+      // props.setAuthenticated(true);
+      props.history.push('/chores');
+    })
   };
 
   return (
