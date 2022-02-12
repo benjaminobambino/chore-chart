@@ -6,7 +6,7 @@ const Header = ({ authenticated, user, handleLogOut }) => {
   return (
     <div>
       <h1>Chore Chart</h1>
-      { authenticated ? 
+      { authenticated && user ? 
         <UserNavBar handleLogOut={handleLogOut} />
         :
         <PublicNavBar />

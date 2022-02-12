@@ -1,8 +1,7 @@
 import './styles/App.css';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import Client from './services/api';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import Header from './misc/Header';
 import Home from './misc/Home';
 import SignUp from './authComponents/SignUp';
@@ -17,77 +16,62 @@ import ProtectedRoute from './authComponents/ProtectedRoutes';
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [authUser, setAuthUser] = useState(null);
-  const [profile, setProfile] = useState(null);
+  const [user, setUser] = useState(null);
   const [household, setHousehold] = useState({});
   const [chores, setChores] = useState([]);
 
-  // const authUser = process.env.REACT_APP_USERNAME;
-  // const authPassword = process.env.REACT_APP_PASSWORD;
+  const history = useHistory();
 
   const handleLogOut = () => {
-    //Reset all auth related state and clear localstorage
     setAuthenticated(false);
     setAuthUser(null);
-    setProfile(null);
+    setUser(null);
     setHousehold({});
     setChores([]);
     localStorage.clear();
   };
 
-  // const checkToken = async () => {
-  //   const user = await CheckSession();
-  //   setAuthUser(user);
-  //   setAuthenticated(true);
-  // };
-
   const getHousehold = async (householdId) => {
-    const token = localStorage.token;
-    // const res = await axios.get(
-    await Client.get(`/households/${householdId}`, {
-      // headers: {
-      //   Authorization: `Bearer ${token}`
-      // }
-    }).then((res) => {
+    await Client.get(`/households/${householdId}`).then((res) => {
       setHousehold(res.data);
-      // setUser(res.data.users[0]);
       const prioritizedChores = res.data.chores.sort((a, b) => {
         return a.priority - b.priority;
       });
       setChores(prioritizedChores);
+      history.push('/');
     });
   };
 
-  const getProfile = async (userId) => {
+  const getUser = async (userId) => {
     await Client.get(`/users/${userId}`).then((res) => {
-      setProfile(res.data);
+      setUser(res.data);
       if (res.data.household_id) {
         getHousehold(res.data.household_id);
       } else {
-        console.log('no household');
+        history.push('/household');
       }
     });
   };
 
   const getUserInfo = async () => {
-    const token = localStorage.token;
-    await Client.get('/api/users/me', {
-      // headers: {
-      //   Authorization: `Bearer ${token}`
-      // }
-    }).then((res) => {
-      getProfile(res.data.id);
+    await Client.get('/api/users/me').then((res) => {
+      getUser(res.data.id);
       setAuthUser(res.data);
       setAuthenticated(true);
     });
   };
 
-  useEffect(async () => {
+  const checkToken = async () => {
     const token = localStorage.getItem('token');
     if (token) {
       await CheckSession().then(() => {
         getUserInfo();
       });
     }
+  };
+
+  useEffect(() => {
+    checkToken();
   }, []);
 
   return (
@@ -95,7 +79,7 @@ function App() {
       <header className="App-header">
         <Header
           authenticated={authenticated}
-          user={profile}
+          user={user}
           handleLogOut={handleLogOut}
         />
       </header>
@@ -104,7 +88,7 @@ function App() {
           <Route
             exact
             path="/"
-            component={(props) => <Home {...props} profile={profile} />}
+            component={(props) => <Home {...props} user={user} />}
           />
           <Route path="/signup" component={SignUp} />
           <Route
@@ -115,17 +99,14 @@ function App() {
                 setAuthenticated={setAuthenticated}
                 setAuthUser={setAuthUser}
                 getUserInfo={getUserInfo}
+                user={user}
               />
             )}
           />
           <Route
             path="/household"
             component={(props) => (
-              <HouseholdForm
-                {...props}
-                profile={profile}
-                getProfile={getProfile}
-              />
+              <HouseholdForm {...props} user={user} getUser={getUser} />
             )}
           />
           <Route
@@ -134,16 +115,13 @@ function App() {
               <Chores
                 {...props}
                 chores={chores}
-                // user={user}
+                user={user}
                 household={household}
                 getHousehold={getHousehold}
               />
             )}
           />
-          <Profile
-            path="/profile" // user={user}
-            getHousehold={getHousehold}
-          />
+          <Profile path="/profile" user={user} getHousehold={getHousehold} />
           <About path="/about" />
         </Switch>
       </main>

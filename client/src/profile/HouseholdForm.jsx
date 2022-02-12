@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from "react";
 import Client from "../services/api";
-import axios from "axios";
 
 const HouseholdForm = (props) => {
+  const [householdOptions, setHouseholdOptions] = useState([])
   const [inputValue, setInputValue] = useState({
-    name: ''
+    name: '',
+    household_id: null
   })
   const [addNew, setAddNew] = useState(null)
-  const [householdOptions, setHouseholdOptions] = useState([])
 
   const handleChange = (e) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
   };
 
   const assignHousehold = async (householdId) => {
-    console.log(householdId)
     await Client.patch(`/users/${props.profile.id}`, { ...props.profile, household_id: householdId}, {
     }).then(() => {
       props.getProfile(props.profile.id)
@@ -30,13 +29,26 @@ const HouseholdForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    addHousehold()
+    if (addNew) {
+      addHousehold()
+    } else if (addNew === false) {
+      assignHousehold(inputValue.household_id)
+    }
   } 
 
   const getHouseholds = async () => {
     await Client.get(`/households/`).then((res) => {
-      setHouseholdOptions(res.data)
+      const sortById = res.data.sort((a, b) => {
+        return a.id - b.id
+      })
+      setHouseholdOptions(sortById)
+      setInputValue({ ...inputValue, household_id: 1})
     })
+  }
+
+  const handleExistingOption = () => {
+    getHouseholds()
+    setAddNew(false)
   }
 
   useEffect(() => {
@@ -51,14 +63,18 @@ const HouseholdForm = (props) => {
         <label htmlFor="new">Make a New Household</label>
         <input type="radio" id="new" name="new-or-existing" onChange={() => setAddNew(true)} />
         <label htmlFor="existing">Join an Existing Household</label>
-        <input type="radio" id="existing" name="new-or-existing" onChange={() => setAddNew(false)} />
+        <input type="radio" id="existing" name="new-or-existing" onChange={handleExistingOption} />
       </form>
+      {addNew ?
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name</label>
         <input type="text" name="name" onChange={handleChange} />
         <button type="submit">Add Household</button>
       </form>
-      {/* <section>
+        : null}
+      {addNew === false ?
+        <form onSubmit={handleSubmit}>
+        <section>
             <select name="household_id" onChange={handleChange}>
               {householdOptions.map((house) => {
                 return(
@@ -66,7 +82,9 @@ const HouseholdForm = (props) => {
                 )
               })}
             </select>
-          </section> */}
+          </section>
+          <button type="submit">Add Household</button>
+        </form> : null}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MyChores from "./MyChores";
 import UnclaimedChores from "./UnclaimedChores";
 import AllChores from "./AllChores";
@@ -27,6 +27,14 @@ const Chores = (props) => {
   const showNew = () => {
     setShow({ ...show, new: !show.new})
   }
+
+  useEffect(() => {
+    if (props.user) {
+      if (props.user.household_id === null) {
+        props.history.push("/household")
+      }
+    }
+  })
 
   return (
     <div>

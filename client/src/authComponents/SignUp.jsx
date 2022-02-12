@@ -7,14 +7,11 @@ const iState = {
   username: '',
   email: '',
   password: '',
-  confirmPassword: '',
-  household_id: 1
+  confirmPassword: ''
 };
 
 const SignUp = (props) => {
   const [formValues, setFormValues] = useState(iState);
-
-  // const BASE_URL = process.env.REACT_APP_BASE_URL
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
@@ -22,12 +19,10 @@ const SignUp = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(parseInt(formValues.household_id))
     await RegisterUser({
       username: formValues.username,
       email: formValues.email,
-      password: formValues.password,
-      household_id: parseInt(formValues.household_id)
+      password: formValues.password
     });
     setFormValues(iState);
     props.history.push('/login');

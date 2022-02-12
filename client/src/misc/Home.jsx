@@ -1,9 +1,9 @@
 import React from "react"
 
-const Home = ({ profile }) => {
+const Home = ({ user }) => {
   return(
     <div>
-      <h2>{!profile ? 'Welcome to Chore Chart!' : `Welcome back, ${profile.username}`}</h2>
+      <h2>{!user ? 'Welcome to Chore Chart!' : `Welcome back, ${user.username}!`}</h2>
     </div>
   )
 }
