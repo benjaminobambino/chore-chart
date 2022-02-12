@@ -1,3 +1,4 @@
+from asyncore import write
 from rest_framework import serializers
 from .models import Household, Chore
 from accounts.models import CustomUser
@@ -59,7 +60,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     view_name = 'user_detail'
   )
 
-  email = serializers.EmailField(required=True)
+  email = serializers.EmailField(required=True, write_only=True)
   username = serializers.CharField(required=True)
   password = serializers.CharField(min_length=8, write_only=True)
 
