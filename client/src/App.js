@@ -7,6 +7,7 @@ import Header from './misc/Header';
 import Home from './misc/Home';
 import SignUp from './authComponents/SignUp';
 import LogIn from './authComponents/LogIn';
+import HouseholdForm from './profile/HouseholdForm';
 import Chores from './chores/Chores';
 import Profile from './profile/Profile';
 import About from './misc/About';
@@ -37,10 +38,31 @@ function App() {
   //   setAuthenticated(true);
   // };
 
+  const getHousehold = async (householdId) => {
+    const token = localStorage.token;
+    // const res = await axios.get(
+    await Client.get(`/households/${householdId}`, {
+      // headers: {
+      //   Authorization: `Bearer ${token}`
+      // }
+    }).then((res) => {
+      setHousehold(res.data);
+      // setUser(res.data.users[0]);
+      const prioritizedChores = res.data.chores.sort((a, b) => {
+        return a.priority - b.priority;
+      });
+      setChores(prioritizedChores);
+    });
+  };
+
   const getProfile = async (userId) => {
     await Client.get(`/users/${userId}`).then((res) => {
       setProfile(res.data);
-      getHousehold(1);
+      if (res.data.household_id) {
+        getHousehold(res.data.household_id);
+      } else {
+        console.log('no household');
+      }
     });
   };
 
@@ -55,24 +77,6 @@ function App() {
       setAuthUser(res.data);
       setAuthenticated(true);
     });
-  };
-
-  const getHousehold = async (householdId) => {
-    const token = localStorage.token;
-    const res = await axios.get(
-      `http://localhost:8000/households/${householdId}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      }
-    );
-    setHousehold(res.data);
-    // setUser(res.data.users[0]);
-    const prioritizedChores = res.data.chores.sort((a, b) => {
-      return a.priority - b.priority;
-    });
-    setChores(prioritizedChores);
   };
 
   useEffect(() => {
@@ -109,6 +113,16 @@ function App() {
                 setAuthenticated={setAuthenticated}
                 setAuthUser={setAuthUser}
                 getUserInfo={getUserInfo}
+              />
+            )}
+          />
+          <Route
+            path="/household"
+            component={(props) => (
+              <HouseholdForm
+                {...props}
+                profile={profile}
+                getHousehold={getHousehold}
               />
             )}
           />
