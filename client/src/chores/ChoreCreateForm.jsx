@@ -31,7 +31,7 @@ const ChoreCreateForm = (props) => {
         }
       })
       .then(() => {
-        props.getHousehold()
+        props.getHousehold(props.household.id)
         setDisplayedMessage(`\u201C${inputValue.name}\u201D has been added!`)
         setInputValue({
           name: '',

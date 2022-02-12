@@ -8,12 +8,12 @@ const AllChores = (props) => {
         props.chores.map((chore) => {
           return (
             <div key={chore.id}>
-              <ChoreCard chore={chore} user={props.user} getHousehold={props.getHousehold} />
+              <ChoreCard chore={chore} user={props.user} getHousehold={props.getHousehold} household={props.household} />
             </div>
           )
         })
       :
-        <p>{props.householdName} has no chores!</p>
+        <p>{props.household.name} has no chores!</p>
       }
     </div>
   )

@@ -1,5 +1,5 @@
-import axios from "axios";
 import React, { useState } from "react";
+import Client from "../services/api";
 
 const ChoreEditForm = (props) => {
   const [inputValue, setInputValue] = useState({ ...props.chore })
@@ -16,17 +16,20 @@ const ChoreEditForm = (props) => {
   };
 
   const updateChore = async (choreId) => {
-    await axios.put(`${BASE_URL}/chores/${choreId}`,
-      { ...inputValue, priority: parseInt(inputValue.priority) },
-      {
-        auth: {
-          username: authUser,
-          password: authPassword
-        }
-      })
+    await Client.put(`/chores/${choreId}`,
+      { ...inputValue, priority: parseInt(inputValue.priority) }
+      // ,
+      // {
+      //   auth: {
+      //     username: authUser,
+      //     password: authPassword
+      //   }
+      // }
+      )
       .then(() => {
-        props.getHousehold()
-        props.setEditing(false)
+        console.log(props.household)
+        // props.getHousehold(props.household.id)
+        // props.setEditing(false)
 
       })
   }

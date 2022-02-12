@@ -45,7 +45,7 @@ const Chores = (props) => {
       </div>
       {show.mine && (
         <div className="accordion-body">
-          <MyChores chores={props.chores} user={props.user} getHousehold={props.getHousehold} />
+          <MyChores chores={props.chores} user={props.user} getHousehold={props.getHousehold} household={props.household} />
         </div>
       )}
       <div className="accordion-header" onClick={showUnclaimed}>
@@ -54,7 +54,7 @@ const Chores = (props) => {
       </div>
       {show.unclaimed && (
         <div className="accordion-body">
-          <UnclaimedChores chores={props.chores} user={props.user} getHousehold={props.getHousehold} />
+          <UnclaimedChores chores={props.chores} user={props.user} getHousehold={props.getHousehold} household={props.household} />
         </div>
       )}
       <div className="accordion-header" onClick={showAll}>
@@ -63,7 +63,7 @@ const Chores = (props) => {
       </div>
       {show.all && (
         <div className="accordion-body">
-          <AllChores householdName={props.household.name} chores={props.chores} user={props.user} getHousehold={props.getHousehold} />
+          <AllChores household={props.household} chores={props.chores} user={props.user} getHousehold={props.getHousehold} />
         </div>
       )}
       <div className="accordion-header" onClick={showNew}>

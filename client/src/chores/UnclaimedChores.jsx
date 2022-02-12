@@ -10,7 +10,7 @@ const UnclaimedChores = (props) => {
         unclaimedChores.map((chore) => {
           return (
             <div key={chore.id}>
-              <ChoreCard chore={chore} user={props.user} getHousehold={props.getHousehold} />
+              <ChoreCard chore={chore} user={props.user} getHousehold={props.getHousehold} household={props.household} />
             </div>
           )
         })
