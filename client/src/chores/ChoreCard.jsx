@@ -128,6 +128,7 @@ const ChoreCard = ({ chore, user, getHousehold, household }) => {
         </section>
         <p>{chore.notes}</p>
         <h5>{priorityMessage}</h5>
+        <h5>Claimed by: {chore.doer.username}</h5>
         <section className="chore-card-buttons">
           <button onClick={() => {claimChore(chore.id)}}>{ !claimed ? 'Claim' : 'Unclaim' } </button>
           {user.admin || mine ? <button onClick={() => {setEditing(true)}}>Edit</button> : null }
