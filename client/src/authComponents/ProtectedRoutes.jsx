@@ -2,7 +2,7 @@ import React from "react";
 import { Redirect, Route } from "react-router-dom";
 
 export default function ProtectedRoute({
-  user,
+  // user,
   authenticated,
   component: Component,
   ...rest
@@ -11,10 +11,11 @@ export default function ProtectedRoute({
     <Route
       {...rest}
       render={(props) =>
-        user && authenticated ? (
+        // user && 
+        authenticated ? (
           <Component {...props} />
         ) : (
-          <Redirect to="/signin" />
+          <Redirect to="/login" />
         )
       }
     />

@@ -33,7 +33,7 @@ const SignUp = (props) => {
       <div className="card-overlay centered">
         <form className="col" onSubmit={handleSubmit}>
           <div className="input-wrapper">
-            <label htmlFor="username">Username</label>
+            <label htmlFor="username">Name</label>
             <input
               onChange={handleChange}
               name="username"

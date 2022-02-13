@@ -29,6 +29,9 @@ const Chores = (props) => {
   }
 
   useEffect(() => {
+    if (!localStorage.getItem('token')) {
+      props.history.push('/login')
+    }
     if (props.user) {
       if (props.user.household_id === null) {
         props.history.push("/household")

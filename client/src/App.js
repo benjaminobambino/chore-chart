@@ -41,7 +41,6 @@ function App() {
         return a.priority - b.priority;
       });
       setChores(prioritizedChores);
-      // history.push('/');
     });
   };
 
@@ -75,6 +74,7 @@ function App() {
 
   useEffect(() => {
     checkToken();
+    setInterval(CheckSession, 240000);
   }, []);
 
   return (
@@ -112,6 +112,7 @@ function App() {
               <HouseholdForm {...props} user={user} getUser={getUser} />
             )}
           />
+          {/* {authenticated ? ( */}
           <Route
             path="/chores"
             render={(props) => (
@@ -124,6 +125,9 @@ function App() {
               />
             )}
           />
+          {/* // ) : (
+          //   history.push('/login')
+          // )} */}
           <Profile path="/profile" user={user} getHousehold={getHousehold} />
           <About path="/about" />
         </Switch>
