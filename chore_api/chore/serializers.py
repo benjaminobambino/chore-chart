@@ -61,10 +61,15 @@ class ChoreSerializer(serializers.HyperlinkedModelSerializer):
     source = 'household'
   )
 
-  doer = serializers.HyperlinkedRelatedField(
-    required = False,
-    view_name = 'user_detail',
-    read_only = True,
+  # doer = serializers.HyperlinkedRelatedField(
+  #   required = False,
+  #   view_name = 'user_detail',
+  #   read_only = True,
+  # )
+
+  doer = UserSerializer(
+    # many = True,
+    read_only = True
   )
 
   doer_id = serializers.PrimaryKeyRelatedField(
