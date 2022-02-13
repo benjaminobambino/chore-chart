@@ -34,7 +34,7 @@ const Chores = (props) => {
     }
     if (props.user) {
       if (props.user.household_id === null) {
-        props.history.push("/household")
+        props.history.push("/joinhousehold")
       }
     }
   })

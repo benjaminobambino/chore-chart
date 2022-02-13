@@ -6,7 +6,7 @@ const UserNavBar = ({ handleLogOut }) => {
     <nav>
       <NavLink to="/">Home</NavLink>
       <NavLink to="/chores">Chores</NavLink>
-      <NavLink to="/profile">Profile</NavLink>
+      <NavLink to="/household">Household</NavLink>
       <NavLink to="/about">About</NavLink>
       <NavLink onClick={handleLogOut} to="/">Log Out</NavLink>
     </nav>

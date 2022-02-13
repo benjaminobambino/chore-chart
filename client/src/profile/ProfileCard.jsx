@@ -1,10 +1,9 @@
 import React from "react";
 
-const ProfileCard = (props) => {
+const ProfileCard = ({ user }) => {
   return (
     <div>
-      <h3>ProfileCard</h3>
-      <button onClick={props.toggleEditing}>Edit Profile</button>
+      <h3>{user.username}</h3>
     </div>
   )
 }

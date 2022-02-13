@@ -1,12 +1,11 @@
 import Client from './api';
+import { Redirect } from 'react-router-dom';
 
 export const LogInUser = async (data) => {
   try {
     const res = await Client.post('/api/token/', data);
     // Set the current signed in users token to localstorage
-    // localStorage.setItem('token', res.data.token);
     localStorage.setItem('refresh', res.data.refresh);
-    // localStorage.setItem('id', res.data.id);
     localStorage.setItem('token', res.data.access);
     return res.data;
   } catch (error) {
@@ -19,6 +18,7 @@ export const RegisterUser = async (data) => {
     const res = await Client.post('/api/user/signup/', data);
     return res.data;
   } catch (error) {
+    alert('Name and/or email already taken.');
     throw error;
   }
 };

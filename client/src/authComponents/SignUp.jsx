@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { RegisterUser } from '../services/Auth';
-import axios from 'axios';
-import Client from '../services/api';
 
 const iState = {
   username: '',
