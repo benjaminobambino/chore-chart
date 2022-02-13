@@ -44,6 +44,7 @@ const SignUp = (props) => {
         password: inputValue.password
       });
       setInputValue(iState);
+      alert('Thank you for signing up!')
       props.history.push('/login');
     }
   };
