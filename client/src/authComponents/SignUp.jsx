@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { RegisterUser } from '../services/Auth';
+import Client from '../services/api';
 
 const iState = {
   username: '',
@@ -9,21 +9,43 @@ const iState = {
 };
 
 const SignUp = (props) => {
-  const [formValues, setFormValues] = useState(iState);
+  const [inputValue, setInputValue] = useState(iState);
+  const [displayedMessage, setDisplayedMessage] = useState('')
 
   const handleChange = (e) => {
-    setFormValues({ ...formValues, [e.target.name]: e.target.value });
+    setInputValue({ ...inputValue, [e.target.name]: e.target.value });
+    setDisplayedMessage('')
+  };
+
+  const registerUser = async (data) => {
+    try {
+      const res = await Client.post('/api/user/signup/', data);
+      return res.data;
+    } catch (error) {
+      setDisplayedMessage('Name and/or email already taken.');
+      throw error;
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await RegisterUser({
-      username: formValues.username,
-      email: formValues.email,
-      password: formValues.password
-    });
-    setFormValues(iState);
-    props.history.push('/login');
+    if (!inputValue.username.length) {
+      setDisplayedMessage('You must enter a name.')
+    } else if (!inputValue.email.length) {
+      setDisplayedMessage('You must enter an email.')
+    } else if (inputValue.password.length < 8) {
+      setDisplayedMessage('Your password must be at least 8 characters long.')
+    } else if (inputValue.password !== inputValue.confirmPassword) {
+      setDisplayedMessage('Your passwords do not match.')
+    } else {
+      await registerUser({
+        username: inputValue.username,
+        email: inputValue.email,
+        password: inputValue.password
+      });
+      setInputValue(iState);
+      props.history.push('/login');
+    }
   };
 
   return (
@@ -37,8 +59,7 @@ const SignUp = (props) => {
               name="username"
               type="text"
               placeholder="John Smith"
-              value={formValues.username}
-              required
+              value={inputValue.username}
             />
           </div>
           <div className="input-wrapper">
@@ -48,8 +69,7 @@ const SignUp = (props) => {
               name="email"
               type="email"
               placeholder="example@example.com"
-              value={formValues.email}
-              required
+              value={inputValue.email}
             />
           </div>
 
@@ -59,8 +79,7 @@ const SignUp = (props) => {
               onChange={handleChange}
               type="password"
               name="password"
-              value={formValues.password}
-              required
+              value={inputValue.password}
             />
           </div>
           <div className="input-wrapper">
@@ -69,20 +88,12 @@ const SignUp = (props) => {
               onChange={handleChange}
               type="password"
               name="confirmPassword"
-              value={formValues.confirmPassword}
-              required
+              value={inputValue.confirmPassword}
             />
           </div>
-          <button
-            disabled={
-              !formValues.email ||
-              (!formValues.password &&
-                formValues.confirmPassword === formValues.password)
-            }
-          >
-            Sign In
-          </button>
+          <button type="submit">Sign In</button>
         </form>
+        {displayedMessage}
       </div>
     </div>
   );
