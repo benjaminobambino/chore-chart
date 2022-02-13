@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MyChores from "./MyChores";
 import UnclaimedChores from "./UnclaimedChores";
 import AllChores from "./AllChores";
@@ -28,6 +28,17 @@ const Chores = (props) => {
     setShow({ ...show, new: !show.new})
   }
 
+  useEffect(() => {
+    if (!localStorage.getItem('token')) {
+      props.history.push('/login')
+    }
+    if (props.user) {
+      if (props.user.household_id === null) {
+        props.history.push("/joinhousehold")
+      }
+    }
+  })
+
   return (
     <div>
       <h2>{props.household.name} Chores</h2>
@@ -37,7 +48,7 @@ const Chores = (props) => {
       </div>
       {show.mine && (
         <div className="accordion-body">
-          <MyChores chores={props.chores} user={props.user} getHousehold={props.getHousehold} />
+          <MyChores show={show.mine} chores={props.chores} user={props.user} getHousehold={props.getHousehold} household={props.household} />
         </div>
       )}
       <div className="accordion-header" onClick={showUnclaimed}>
@@ -46,7 +57,7 @@ const Chores = (props) => {
       </div>
       {show.unclaimed && (
         <div className="accordion-body">
-          <UnclaimedChores chores={props.chores} user={props.user} getHousehold={props.getHousehold} />
+          <UnclaimedChores show={show.unclaimed} chores={props.chores} user={props.user} getHousehold={props.getHousehold} household={props.household} />
         </div>
       )}
       <div className="accordion-header" onClick={showAll}>
@@ -55,7 +66,7 @@ const Chores = (props) => {
       </div>
       {show.all && (
         <div className="accordion-body">
-          <AllChores householdName={props.household.name} chores={props.chores} user={props.user} getHousehold={props.getHousehold} />
+          <AllChores show={show} household={props.household} chores={props.chores} user={props.user} getHousehold={props.getHousehold} />
         </div>
       )}
       <div className="accordion-header" onClick={showNew}>

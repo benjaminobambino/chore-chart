@@ -31,7 +31,7 @@ const ChoreCreateForm = (props) => {
         }
       })
       .then(() => {
-        props.getHousehold()
+        props.getHousehold(props.household.id)
         setDisplayedMessage(`\u201C${inputValue.name}\u201D has been added!`)
         setInputValue({
           name: '',
@@ -59,8 +59,8 @@ const ChoreCreateForm = (props) => {
     setDisplayedMessage('')
   }
 
-  return (
-    <div>
+  return (      
+    <div className="chore-card">
       <form onSubmit={handleSubmit}>
         <section className="name">
           <label htmlFor="name">New Chore:</label>
