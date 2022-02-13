@@ -1,17 +1,16 @@
 import Client from './api';
 import { Redirect } from 'react-router-dom';
 
-export const LogInUser = async (data) => {
-  try {
-    const res = await Client.post('/api/token/', data);
-    // Set the current signed in users token to localstorage
-    localStorage.setItem('refresh', res.data.refresh);
-    localStorage.setItem('token', res.data.access);
-    return res.data;
-  } catch (error) {
-    throw error;
-  }
-};
+// export const LogInUser = async (data) => {
+//   try {
+//     const res = await Client.post('/api/token/', data);
+//     localStorage.setItem('refresh', res.data.refresh);
+//     localStorage.setItem('token', res.data.access);
+//     return res.data;
+//   } catch (error) {
+//     throw error;
+//   }
+// };
 
 // export const RegisterUser = async (data) => {
 //   try {

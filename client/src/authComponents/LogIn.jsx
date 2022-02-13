@@ -1,21 +1,40 @@
 import React, { useState } from 'react';
-import { LogInUser } from '../services/Auth';
+import Client from '../services/api';
 
 const LogIn = (props) => {
-  const [formValues, setFormValues] = useState({ email: '', password: '' });
+  const [inputValue, setInputValue] = useState({ email: '', password: '' });
+  const [displayedMessage, setDisplayedMessage] = useState('')
 
   const handleChange = (e) => {
-    setFormValues({ ...formValues, [e.target.name]: e.target.value });
+    setInputValue({ ...inputValue, [e.target.name]: e.target.value });
+  };
+
+  const logInUser = async (data) => {
+    try {
+      const res = await Client.post('/api/token/', data);
+      localStorage.setItem('refresh', res.data.refresh);
+      localStorage.setItem('token', res.data.access);
+      return res.data;
+    } catch (error) {
+      setDisplayedMessage('Invalid username/password.')
+      throw error;
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await LogInUser(formValues)
-    .then(() => {
-      setFormValues({ email: '', password: '' });
-      props.getUserInfo()
-      props.history.push('/')
-    })
+    if (!inputValue.email.length) {
+      setDisplayedMessage('You must enter your email.')
+    } else if (!inputValue.password.length) {
+      setDisplayedMessage('You must enter your password.')
+    } else {
+      await logInUser(inputValue)
+      .then(() => {
+        setInputValue({ email: '', password: '' });
+        props.getUserInfo()
+        props.history.push('/')
+      })
+    }
   };
 
   return (
@@ -29,8 +48,7 @@ const LogIn = (props) => {
               name="email"
               type="email"
               placeholder="example@example.com"
-              value={formValues.email}
-              required
+              value={inputValue.email}
             />
           </div>
           <div className="input-wrapper">
@@ -39,13 +57,11 @@ const LogIn = (props) => {
               onChange={handleChange}
               type="password"
               name="password"
-              value={formValues.password}
-              required
+              value={inputValue.password}
             />
           </div>
-          <button disabled={!formValues.email || !formValues.password}>
-            Sign In
-          </button>
+          <button type="submit">Sign In</button>
+          <p>{displayedMessage}</p>
         </form>
       </div>
     </div>
