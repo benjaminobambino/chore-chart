@@ -34,7 +34,10 @@ function App() {
   const getHousehold = async (householdId) => {
     await Client.get(`/households/${householdId}`).then((res) => {
       setHousehold(res.data);
-      const prioritizedChores = res.data.chores.sort((a, b) => {
+      const idOrderedChores = res.data.chores.sort((a, b) => {
+        return a.id - b.id;
+      });
+      const prioritizedChores = idOrderedChores.sort((a, b) => {
         return a.priority - b.priority;
       });
       setChores(prioritizedChores);
