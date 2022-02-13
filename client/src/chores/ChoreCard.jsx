@@ -128,9 +128,9 @@ const ChoreCard = ({ chore, user, getHousehold, household }) => {
         </section>
         <p>{chore.notes}</p>
         <h5>{priorityMessage}</h5>
-        <h5>Claimed by: {chore.doer.username}</h5>
+        <h5>{ claimed ? `Claimed by: ${chore.doer.username}` : 'Unclaimed'}</h5>
         <section className="chore-card-buttons">
-          <button onClick={() => {claimChore(chore.id)}}>{ !claimed ? 'Claim' : 'Unclaim' } </button>
+          {!chore.done ? <button onClick={() => {claimChore(chore.id)}}>{ !claimed ? 'Claim' : 'Unclaim' } </button> : null }
           {user.admin || mine ? <button onClick={() => {setEditing(true)}}>Edit</button> : null }
           {user.admin ? <button onClick={() => {deleteChore(chore.id)}}>Delete</button> : null }
         </section>

@@ -1,16 +1,5 @@
 import Client from './api';
 
-// export const GetUserInfo = async () => {
-//   const token = localStorage.token;
-//   const res = await Client.get('/api/users/me', {
-//     headers: {
-//       Authorization: `Bearer ${token}`
-//     }
-//   }).then(() => {
-
-//   });
-// };
-
 export const LogInUser = async (data) => {
   try {
     const res = await Client.post('/api/token/', data);
