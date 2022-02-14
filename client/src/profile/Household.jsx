@@ -22,8 +22,8 @@ const Household = (props) => {
       {props.users &&
       adminFirst.map((user) => {
         return(
-          <div key={props.user.id}>
-            <ProfileCard user={props.user} />
+          <div key={user.id}>
+            <ProfileCard user={user} />
           </div>
         )
       })}
