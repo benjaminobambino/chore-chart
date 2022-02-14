@@ -74,6 +74,7 @@
 
   border: 1px solid black;
   margin-bottom: 2vh; 
+  backdrop-filter: blur(3.5px) contrast(2);
 }
 
 .chore-card-header {
