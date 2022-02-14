@@ -17,9 +17,9 @@ const ProfileCard = ({ user, currentUser, getHousehold, household }) => {
 
   return (
     <div className="profile-card">
-      {user.admin ? <img src="checklist-icon.png" alt="admin" className="admin-icon"/> : null}
+      {user.admin ? <div className="spacer"><img src="checklist-icon.png" alt="admin" className="admin-icon"/></div> : <div className="spacer"></div>}
       <h3>{user.username}</h3>
-      {currentUser.admin && currentUser.id !== user.id && !user.admin ? <button onClick={confirmAdmin}>Make admin</button> : null}
+      {currentUser.admin && currentUser.id !== user.id && !user.admin ? <button onClick={confirmAdmin}>Make Admin</button> : <div></div>}
     </div>
   )
 }

@@ -5,6 +5,10 @@
   font-family: 'Balsamiq Sans', cursive;
 }
 
+button {
+  font-family: 'Balsamiq Sans', cursive;
+}
+
 .header {
   display: flex;
   flex-direction: column;
@@ -87,9 +91,17 @@
 }
 
 .profile-card {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;
+  justify-items: center;
   align-items: center;
+
+  margin: auto 40vw;
+}
+
+.profile-card .spacer {
+  justify-self: right;
 }
 
 .admin-icon {
