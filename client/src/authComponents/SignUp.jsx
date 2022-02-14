@@ -55,40 +55,45 @@ const SignUp = (props) => {
         <form className="col" onSubmit={handleSubmit}>
           <div className="input-wrapper">
             <label htmlFor="username">Name</label>
+            <br />
             <input
               onChange={handleChange}
               name="username"
               type="text"
-              placeholder="John Smith"
+              placeholder="My Name"
               value={inputValue.username}
             />
           </div>
           <div className="input-wrapper">
             <label htmlFor="email">Email</label>
+            <br />
             <input
               onChange={handleChange}
               name="email"
               type="email"
-              placeholder="example@example.com"
+              placeholder="me@something.com"
               value={inputValue.email}
             />
           </div>
-
           <div className="input-wrapper">
             <label htmlFor="password">Password</label>
+            <br />
             <input
               onChange={handleChange}
               type="password"
               name="password"
+              placeholder="somethingsecret"
               value={inputValue.password}
             />
           </div>
           <div className="input-wrapper">
             <label htmlFor="confirmPassword">Confirm Password</label>
+            <br />
             <input
               onChange={handleChange}
               type="password"
               name="confirmPassword"
+              placeholder="somethingsecret"
               value={inputValue.confirmPassword}
             />
           </div>

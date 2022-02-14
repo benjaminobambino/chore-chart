@@ -162,18 +162,18 @@ button:hover {
   background-color: #086788;
 }
 
-.chore-form {
+form {
   margin: 2vh auto;
 }
 
-.chore-form input, textarea {
+form input, textarea {
   margin-bottom: 2vh;
   min-width: 30vw;
   border: none;
   border-radius: 2px;
 }
 
-.chore-form button {
+form button {
   padding: 1vh;
   margin: 2vh 1vw;
 }
