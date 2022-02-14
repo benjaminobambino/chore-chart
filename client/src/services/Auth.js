@@ -1,5 +1,4 @@
 import Client from './api';
-import { Redirect } from 'react-router-dom';
 
 // export const LogInUser = async (data) => {
 //   try {
