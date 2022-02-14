@@ -4,6 +4,7 @@
   text-align: center;
   min-height: 100vh;
   background-image: url('./background-image.jpeg');
+  font-family: 'Balsamiq Sans', cursive;
 }
 
 .header {
