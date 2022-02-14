@@ -4,15 +4,41 @@
   text-align: center;
 }
 
-.App-header {
+.header {
   /* background-color: #282c34; */
   /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /* font-size: calc(10px + 2vmin); */
   /* color: white; */
+}
+
+.title-container {
+  display: flex;
+
+  height: 20vh;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.title h1 {
+  margin: 0 auto;
+  padding: 0;
+  align-self: baseline;
+  font-family: 'Balsamiq Sans', cursive;
+  font-size: 7vh;
+}
+
+.icon {
+  height: 18vh;
+  width: auto;
+  margin: 1vh auto;
 }
 
 /* accordion styles */
