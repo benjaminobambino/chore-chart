@@ -100,8 +100,8 @@ nav a {
   align-items: center;
 }
 
-.chore-card-header h4 {
-  margin-right: 2vw;
+.chore-card-header {
+  margin: auto 2vw;
 }
 
 .chore-card-header-main {
@@ -116,11 +116,7 @@ nav a {
 
   height: 5vh;
   width: 5vh;
-  margin: auto 2vw;
-}
-
-.checkbox:hover {
-  box-shadow: #406376;
+  margin-right: 2vw;
 }
 
 .checkbox h1 {
@@ -132,15 +128,35 @@ nav a {
 }
 
 .medium {
-  color: #e29318;
+  color: #d68c15;
 }
 
 .low {
   color: #086788;
 }
 
+.chore-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: auto 2vw;
+}
+
 .chore-card-buttons {
-  margin-bottom: 2vh;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.chore-card-buttons button {
+  margin: 2vh .5vw;
+  padding: 1vh;
+  border: none;
+  border-radius: 5px;
+}
+
+.chore-card-buttons button:hover {
+  background-color: #086788;
 }
 
 .profile-card {

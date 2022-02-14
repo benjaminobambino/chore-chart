@@ -74,18 +74,20 @@ const ChoreCard = ({ chore, user, getHousehold, household }) => {
       <div className="chore-card">
         <div className="chore-card-header">
           <section className="chore-card-header-main">
-            {mine ? <button className="checkbox" onClick={()=> {markComplete(chore.id)}}>{complete ? <h1>&#10003;</h1> : null }</button> : null }
+            {mine || user.admin ? <button className="checkbox" onClick={()=> {markComplete(chore.id)}}>{complete ? <h1>&#10003;</h1> : null }</button> : null }
             <h3>{chore.name}</h3>
           </section>
           <h4 className={priorityClass}>{priorityMessage}</h4>
         </div>
-        <h5>{claimed ? `Claimed by: ${chore.doer.username}` : 'Unclaimed'}</h5>
         <p>{chore.notes}</p>
-        <section className="chore-card-buttons">
-          {!chore.done ? <button onClick={() => {claimChore(chore.id)}}>{ !claimed ? 'Claim' : 'Unclaim' } </button> : null }
-          {user.admin || mine ? <button onClick={() => {setEditing(true)}}>Edit</button> : null }
-          {user.admin ? <button onClick={() => {deleteChore(chore.id)}}>Delete</button> : null }
-        </section>
+        <div className="chore-card-footer">
+          <h5>{claimed ? `Claimed by: ${chore.doer.id === user.id ? 'Me' : chore.doer.username}` : 'Unclaimed'}</h5>
+          <section className="chore-card-buttons">
+            {!chore.done ? <button onClick={() => {claimChore(chore.id)}}>{ !claimed ? 'Claim' : 'Unclaim' } </button> : null }
+            {user.admin || mine ? <button onClick={() => {setEditing(true)}}>Edit</button> : null }
+            {user.admin ? <button onClick={() => {deleteChore(chore.id)}}>Delete</button> : null }
+          </section>
+        </div>
       </div>
     )
   } else {
