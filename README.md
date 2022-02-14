@@ -1,4 +1,5 @@
 # Chore Chart
+![Chore Chart](client/src/pics/logo.png)
 ## Date: 2/6/2022
 ### By: Benjamin Peck
 #### [GitHub](https://github.com/benjaminobambino) | [LinkedIn](https://www.linkedin.com/in/benjaminlpeck/)
@@ -44,10 +45,10 @@
 - [ ] Message board
 - [ ] Dark mode
 - [ ] OAuth
-<!-- *** -->
-<!-- ### ***Credits***
+***
+### ***Credits***
 
-##### Happy Dad Image: [Pinclipart.com](https://www.pinclipart.com/)
+##### Checklist Icon: [IconArchive](https://iconarchive.com/)
 
 ##### Laugh Icon: [tulpahn](https://www.flaticon.com/authors/tulpahn) from [www.flaticon.com](https://www.flaticon.com/)
 

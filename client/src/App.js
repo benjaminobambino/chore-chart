@@ -87,13 +87,11 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <Header
-          authenticated={authenticated}
-          user={user}
-          handleLogOut={handleLogOut}
-        />
-      </header>
+      <Header
+        authenticated={authenticated}
+        user={user}
+        handleLogOut={handleLogOut}
+      />
       <main>
         <Switch>
           <Route
