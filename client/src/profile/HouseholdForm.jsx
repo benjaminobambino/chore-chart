@@ -73,15 +73,16 @@ const HouseholdForm = (props) => {
     <div className="household-form">
       <h2>Welcome to Chore Chart!</h2>
       <p>Every Chore Chart user must be part of a household. Would you like to join an existing household or create a new one?</p>
-      <form className="new-or-existing-household">
+      <div className="new-or-existing-household">
         <label htmlFor="new">Make a New Household</label>
         <input type="radio" id="new" name="new-or-existing" onChange={handleNewOption} />
         <label htmlFor="existing">Join an Existing Household</label>
         <input type="radio" id="existing" name="new-or-existing" onChange={handleExistingOption} />
-      </form>
+      </div>
       {addNew ?
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name</label>
+        <br />
         <input type="text" name="name" onChange={handleChange} />
         <button type="submit">Add Household</button>
         <p>{displayedMessage}</p>
