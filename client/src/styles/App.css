@@ -17,6 +17,22 @@ button {
   background-image: linear-gradient(to top, #086788, #2babd5);
 }
 
+nav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  background-color: #ba1212;
+  min-width: 100%;
+  min-height: 4vh;
+}
+
+nav a {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+
 .title-container {
   display: flex;
 
@@ -93,15 +109,18 @@ button {
 .profile-card {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  justify-content: center;
   justify-items: center;
   align-items: center;
 
-  margin: auto 40vw;
+  border: 1px solid #406376;
+  border-radius: 1px;
+  backdrop-filter: blur(3.5px) contrast(2);
+  margin: auto 30vw;
+  margin-bottom: 2vh; 
 }
 
-.profile-card .spacer {
-  justify-self: right;
+.profile-card button {
+  margin: auto 1vw;
 }
 
 .admin-icon {
