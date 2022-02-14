@@ -137,6 +137,9 @@ function App() {
                 {...props}
                 users={household.users}
                 name={household.name}
+                currentUser={user}
+                getHousehold={getHousehold}
+                household={household}
               />
             )}
           />

@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ProfileCard from "./ProfileCard";
 
 const Household = (props) => {
-  // useEffect(() => {
     let adminFirst
     if (!localStorage.getItem('token')) {
       props.history.push('/login')
@@ -11,22 +10,24 @@ const Household = (props) => {
         return b.admin - a.admin
       })          
     }
-  // })
-
-
-  
 
   return (
     <div>
       <h2>{props.name} Team Members</h2>
       {props.users &&
-      adminFirst.map((user) => {
-        return(
-          <div key={user.id}>
-            <ProfileCard user={user} />
-          </div>
-        )
-      })}
+        adminFirst.map((user) => {
+          return(
+            <div key={user.id}>
+              <ProfileCard 
+                user={user} 
+                currentUser={props.currentUser} 
+                getHousehold={props.getHousehold} 
+                household={props.household} 
+              />
+            </div>
+          )
+        })
+      }
     </div>
   )
 }

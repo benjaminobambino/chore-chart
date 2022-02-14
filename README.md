@@ -38,9 +38,9 @@
 ![Component Hierarchy Diagram](diagrams/component-hierarchy-diagram-dark-2.png)
 ***
 ### ***Future Updates***
-- [ ] JWT Authentication
+- [x] JWT Authentication
+- [x] 3rd party API for inspirational quotes
 - [ ] Recurring chores feature
-- [ ] 3rd party API for inspirational quotes
 - [ ] Chore point value and weekly winner
 - [ ] Message board
 - [ ] Dark mode
@@ -50,7 +50,7 @@
 
 ##### Checklist Icon: [IconArchive](https://iconarchive.com/)
 
-##### Laugh Icon: [tulpahn](https://www.flaticon.com/authors/tulpahn) from [www.flaticon.com](https://www.flaticon.com/)
+##### Background Image: [A&W Maintenance Inc.](https://awmaint.com/a_w_logo/)
 
 ##### Sad Icon: [Freepik](https://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com/)
 
