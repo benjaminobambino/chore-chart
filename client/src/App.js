@@ -1,6 +1,7 @@
 import './styles/App.css';
 import { useState, useEffect } from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
+import axios from 'axios';
 import Client from './services/api';
 import { CheckSession } from './services/Auth';
 import Header from './misc/Header';
@@ -18,6 +19,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [household, setHousehold] = useState({});
   const [chores, setChores] = useState([]);
+  const [quote, setQuote] = useState({});
 
   const history = useHistory();
 
@@ -71,8 +73,15 @@ function App() {
     }
   };
 
+  const getQuotes = async () => {
+    await axios.get('https://type.fit/api/quotes').then((res) => {
+      setQuote(res.data[Math.floor(Math.random() * res.data.length - 1)]);
+    });
+  };
+
   useEffect(() => {
     checkToken();
+    getQuotes();
     setInterval(CheckSession, 240000);
   }, []);
 
@@ -90,7 +99,7 @@ function App() {
           <Route
             exact
             path="/"
-            component={(props) => <Home {...props} user={user} />}
+            component={(props) => <Home {...props} user={user} quote={quote} />}
           />
           <Route path="/signup" component={SignUp} />
           <Route
