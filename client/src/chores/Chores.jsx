@@ -40,7 +40,7 @@ const Chores = (props) => {
   })
 
   return (
-    <div>
+    <div className="chores">
       <h2>{props.household.name} Chores</h2>
       <div className="accordion-header" onClick={showMine}>
         <h3 className="accordion-sign">{show.mine ? '-' : '+' }</h3>

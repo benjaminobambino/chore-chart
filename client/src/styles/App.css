@@ -61,6 +61,10 @@ nav a {
   margin: 1vh auto;
 }
 
+.chores {
+  padding-bottom: 5vh;
+}
+
 .accordion-sign {
   font-size: 25px;
   margin-right: 10vw;
@@ -73,13 +77,12 @@ nav a {
 
   cursor: pointer;
   padding: 2vh 2vw;
-  margin: 2vh 5vw;
+  margin: 2vh 10vw;
   border: 2px solid rgb(133, 133, 133);
   background-color: rgb(7, 92, 126);
 }
 .accordion-body {
-  padding: 15px 5px;
-  margin: -2vh 5vw;
+  margin: auto 11vw;
 }
 
 .chore-card {
@@ -93,13 +96,47 @@ nav a {
 
 .chore-card-header {
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
 }
 
-.chore-card-header input {
+.chore-card-header h4 {
   margin-right: 2vw;
+}
+
+.chore-card-header-main {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 5vh;
+  width: 5vh;
+  margin: auto 2vw;
+}
+
+.checkbox:hover {
+  box-shadow: #406376;
+}
+
+.checkbox h1 {
+  font-size: 7vh;
+}
+
+.high {
+  color: #ba1212;
+}
+
+.medium {
+  color: #e29318;
+}
+
+.low {
+  color: #086788;
 }
 
 .chore-card-buttons {
@@ -115,7 +152,7 @@ nav a {
   border: 1px solid #406376;
   border-radius: 1px;
   backdrop-filter: blur(3.5px) contrast(2);
-  margin: auto 30vw;
+  margin: auto 10vw;
   margin-bottom: 2vh; 
 }
 
@@ -124,5 +161,5 @@ nav a {
 }
 
 .admin-icon {
-  height: 24px;
+  height: 5vh;
 }
