@@ -1,5 +1,3 @@
-/* default React styles */
-
 .App {
   text-align: center;
   min-height: 100vh;
@@ -28,9 +26,10 @@
 }
 
 .title h1 {
+  align-self: baseline;
+
   margin: 0 auto;
   padding: 0;
-  align-self: baseline;
   font-family: 'Balsamiq Sans', cursive;
   font-size: 7vh;
   color: #f9f9f9;
@@ -41,8 +40,6 @@
   width: auto;
   margin: 1vh auto;
 }
-
-/* accordion styles */
 
 .accordion-sign {
   font-size: 25px;
@@ -64,10 +61,6 @@
   padding: 15px 5px;
   margin: -2vh 5vw;
 }
-
-/* .accordion-title {
-  text-align: center;
-} */
 
 .chore-card {
   display: flex;
@@ -91,4 +84,14 @@
 
 .chore-card-buttons {
   margin-bottom: 2vh;
+}
+
+.profile-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-icon {
+  height: 24px;
 }
