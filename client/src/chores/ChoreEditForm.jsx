@@ -48,7 +48,7 @@ const ChoreEditForm = (props) => {
 
   return (
     <div className="chore-card">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}  className="chore-form">
         <section className="name">
           <label htmlFor="name">Chore:</label>
           <br />
@@ -63,7 +63,7 @@ const ChoreEditForm = (props) => {
         <section className="notes">
           <label htmlFor="notes">Notes (optional):</label>
           <br />
-          <input
+          <textarea
             type="text"
             name="notes"
             value={inputValue.notes}
