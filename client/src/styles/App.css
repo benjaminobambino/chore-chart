@@ -5,7 +5,7 @@
   font-family: 'Balsamiq Sans', cursive;
 }
 
-button {
+button, input, textarea, select {
   font-family: 'Balsamiq Sans', cursive;
 }
 
@@ -151,12 +151,31 @@ nav a {
 .chore-card-buttons button {
   margin: 2vh .5vw;
   padding: 1vh;
+}
+
+button {
   border: none;
   border-radius: 5px;
 }
 
-.chore-card-buttons button:hover {
+button:hover {
   background-color: #086788;
+}
+
+.chore-form {
+  margin: 2vh auto;
+}
+
+.chore-form input, textarea {
+  margin-bottom: 2vh;
+  min-width: 30vw;
+  border: none;
+  border-radius: 2px;
+}
+
+.chore-form button {
+  padding: 1vh;
+  margin: 2vh 1vw;
 }
 
 .profile-card {
