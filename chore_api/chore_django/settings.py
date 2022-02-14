@@ -140,13 +140,7 @@ WSGI_APPLICATION = 'chore_django.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'chore',
-        'USER': 'choreuser',
-        'PASSWORD': 'secretchore',
-        'HOST': 'localhost',
-    }
+    'default': dj_database_url.config(conn_max_age=600)
 }
 
 
@@ -227,3 +221,5 @@ SIMPLE_JWT = {
 }
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+STATIC_ROOT=os.path.join(BASE_DIR, "static/")
