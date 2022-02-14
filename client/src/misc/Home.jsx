@@ -6,15 +6,15 @@ const Home = ({ user, quote }) => {
   
   if (user) {
     return(
-      <div>
+      <div className="home">
         <h2>Welcome back, {user.username}!</h2>
         <p className="quote-text">&ldquo;{quote.text}&rdquo;</p>
-        <p className="quote-author">{quote.author}</p>
+        <p className="quote-author">- {quote.author}</p>
       </div>
     )
   } else {
     return(
-      <div>
+      <div className="home">
         <h2>Welcome to Chore Chart!</h2>
         <h4>Problem #1:</h4>
         <p>Whether you live with your family, with roommates, or by yourself, keeping track of household chores can be a nightmare. This causes strain on relationships and other areas of life.</p>

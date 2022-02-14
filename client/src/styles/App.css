@@ -1,12 +1,16 @@
 .App {
   text-align: center;
   min-height: 100vh;
+  background-color: #d1cccc;
   background-image: url('./background-image.jpeg');
   font-family: 'Balsamiq Sans', cursive;
+  color: rgb(0, 33, 53);
 }
 
 button, input, textarea, select {
   font-family: 'Balsamiq Sans', cursive;
+  text-align: center;
+  color: rgb(0, 33, 53);
 }
 
 .header {
@@ -24,30 +28,35 @@ nav {
 
   background-color: #ba1212;
   min-width: 100%;
-  min-height: 4vh;
+  min-height: 5vh;
+  font-size: large;
 }
 
 nav a {
   text-decoration: none;
   font-weight: bold;
-  color: black;
+  color: #d1cccc;
+}
+
+nav a:hover {
+  color: #f9f9f9;
 }
 
 .title-container {
   display: flex;
 
-  height: 20vh;
+  height: 22vh;
 }
 
 .title {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+
+  margin-bottom: 1vh;
 }
 
 .title h1 {
-  align-self: baseline;
-
   margin: 0 auto;
   padding: 0;
   font-family: 'Balsamiq Sans', cursive;
@@ -58,7 +67,34 @@ nav a {
 .icon {
   height: 18vh;
   width: auto;
-  margin: 1vh auto;
+  margin: 2vh auto;
+}
+
+.home, .about {
+  margin: auto 10vw;
+}
+
+.about p {
+  text-align: left;
+}
+
+.chore-chart {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.home button {
+  padding: 1vh;
+}
+
+.quote-text {
+  font-weight: 700;
+  font-style: italic;
+  font-size: large;
+}
+
+.quote-author {
+  font-style: italic;
 }
 
 .chores {
@@ -80,7 +116,10 @@ nav a {
   margin: 2vh 10vw;
   border: 2px solid rgb(133, 133, 133);
   background-color: rgb(7, 92, 126);
+  color: rgb(0, 10, 17);
+  font-size: larger;
 }
+
 .accordion-body {
   margin: auto 11vw;
 }
@@ -89,7 +128,8 @@ nav a {
   display: flex;
   flex-direction: column;
 
-  border: 1px solid black;
+  border: 1px solid rgb(7, 92, 126);
+  border-radius: 1px;
   margin-bottom: 2vh; 
   backdrop-filter: blur(3.5px) contrast(2);
 }
@@ -176,6 +216,10 @@ form input, textarea {
 form button {
   padding: 1vh;
   margin: 2vh 1vw;
+}
+
+.household {
+  padding-bottom: 5vh;
 }
 
 .profile-card {

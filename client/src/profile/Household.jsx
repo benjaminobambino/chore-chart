@@ -12,7 +12,7 @@ const Household = (props) => {
     }
 
   return (
-    <div>
+    <div className="household">
       <h2>{props.name} Team Members</h2>
       {props.users &&
         adminFirst.map((user) => {
