@@ -216,6 +216,10 @@ form {
   margin: 2vh auto;
 }
 
+input, select {
+  min-height: 3vh;
+}
+
 form input, textarea {
   margin-bottom: 2vh;
   min-width: 30vw;
