@@ -72,10 +72,20 @@ nav a:hover {
 
 .home, .about {
   margin: auto 10vw;
+  padding-bottom: 10vh;
 }
 
-.about p {
+.about p, h3, li {
   text-align: left;
+}
+
+.about a {
+  text-decoration: none;
+  color: rgb(0, 33, 53);
+}
+
+.about a:hover {
+  color: #086788;
 }
 
 .chore-chart {
@@ -204,6 +214,10 @@ button:hover {
 
 form {
   margin: 2vh auto;
+}
+
+input, select {
+  min-height: 3vh;
 }
 
 form input, textarea {
