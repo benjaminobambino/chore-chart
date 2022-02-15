@@ -1,6 +1,5 @@
-# Chore Chart
-![Chore Chart](client/src/pics/logo.png)
-## Date: 2/6/2022
+![Chore Chart](screenshots/header.png)
+## Date: 2/14/2022
 ### By: Benjamin Peck
 #### [GitHub](https://github.com/benjaminobambino) | [LinkedIn](https://www.linkedin.com/in/benjaminlpeck/)
 ***
@@ -17,7 +16,6 @@
   * Browser Router
   * useState
   * useEffect
-  * useContext
 * Node
 * JavaScript
 * Axios
@@ -27,15 +25,15 @@
 * HTML5
 ***
 ### ***Getting Started***
-#### A Trello board is being used to keep track of development progress. It can be viewed [here](https://trello.com/b/SIpmHD30/chore-chart).
-#### The project will be deployed and able to be viewed on [Heroku](https://www.heroku.com/).
+#### The project backend REST API has been deployed on [Heroku](https://www.heroku.com/) with the frontend on [Netlify](https://chorechart.netlify.app/).
 #### Simply create an account, log in, and enjoy a smoother chore experience in your household.
+#### A Trello board was used to keep track of development progress. It can be viewed [here](https://trello.com/b/SIpmHD30/chore-chart).
 ***
 ### ***Screenshots***
-#### Entity Relationship Diagram
-![Entity Relationship Diagram](diagrams/erd-dark-1.png)
-#### Component Hierarchy Diagram
-![Component Hierarchy Diagram](diagrams/component-hierarchy-diagram-dark-2.png)
+#### Chore Component with Chore Cards
+![Chore Component with Chore Cards](screenshots/chores.png)
+#### Household Component with Profile Cards
+![Household Component with Profile Cards](screenshots/household.png)
 ***
 ### ***Future Updates***
 - [x] JWT Authentication
@@ -43,15 +41,16 @@
 - [ ] Recurring chores feature
 - [ ] Chore point value and weekly winner
 - [ ] Message board
-- [ ] Dark mode
 - [ ] OAuth
 ***
-### ***Credits***
+### ***Resources***
+
+##### Django Documentation: [Django Documentation](https://docs.djangoproject.com/en/4.0/topics/auth/customizing/)
+
+##### Simple JWT Documentation: [Simple JWT Documentation](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/)
+
+##### Very Academy: [Very Academy](https://github.com/veryacademy/YT-Django-DRF-Simple-Blog-Series-JWT-Part-3)
 
 ##### Checklist Icon: [IconArchive](https://iconarchive.com/)
 
 ##### Background Image: [A&W Maintenance Inc.](https://awmaint.com/a_w_logo/)
-
-##### Sad Icon: [Freepik](https://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com/)
-
-##### Jokes: Everyone who has ever told me a joke -->

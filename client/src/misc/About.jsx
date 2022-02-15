@@ -19,8 +19,27 @@ const About = () => {
         . Any family or group of roommates can use <span className="chore-chart">Chore Chart</span> and 
         streamline their household&rsquo;s chore delegation, communication, and execution.
       </p>
-      <p>The technologies I used in this project are React, Django, JWT Auth, and CSS.</p>
-      <h3>Resources used:</h3>
+      <h3>App Developer:</h3>
+      <p><a href="https://www.linkedin.com/in/benjaminlpeck/" target="_blank" rel="noopener noreferrer">Benjamin Peck</a></p>
+      <h3>Technologies:</h3>
+      <ul>
+        <li>React</li>
+        <li>Django</li>
+        <li>Python</li>
+        <li>PostgreSQL</li>
+        <li>JWT Auth</li>
+        <li>Axios</li>
+        <li>JavaScript</li>
+        <li>CSS Flex and Grid</li>
+      </ul>
+      <h3>Resources:</h3>
+      <ul>
+        <li><a href="https://docs.djangoproject.com/en/4.0/topics/auth/customizing/" target="_blank" rel="noopener noreferrer">Django Documentation</a></li>
+        <li><a href="https://django-rest-framework-simplejwt.readthedocs.io/en/latest/" target="_blank" rel="noopener noreferrer">Simple JWT Documentation</a></li>
+        <li><a href="https://github.com/veryacademy/YT-Django-DRF-Simple-Blog-Series-JWT-Part-3" target="_blank" rel="noopener noreferrer">Very Academy</a></li>
+        <li><a href="https://iconarchive.com/" target="blank" rel="noopener noreferrer">IconArchive (Checklist Icon)</a></li>
+        <li><a href="https://awmaint.com/" target="blank" rel="noopener noreferrer">A&amp;W Maintenance Inc. (Background Image)</a></li>
+      </ul>
     </div>
   )
 }
