@@ -11,16 +11,8 @@ const ChoreEditForm = (props) => {
   };
 
   const updateChore = async (choreId) => {
-    await Client.patch(`/chores/${choreId}`,
-      { ...inputValue, priority: parseInt(inputValue.priority) }
-      // ,
-      // {
-      //   auth: {
-      //     username: authUser,
-      //     password: authPassword
-      //   }
-      // }
-      )
+    await Client
+      .patch(`/chores/${choreId}`, { ...inputValue, priority: parseInt(inputValue.priority) })
       .then(() => {
         props.getHousehold(props.household.id)
         props.setEditing(false)

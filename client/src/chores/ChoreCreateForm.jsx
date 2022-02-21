@@ -9,7 +9,6 @@ const ChoreCreateForm = (props) => {
   const [displayedMessage, setDisplayedMessage] = useState('')
 
   const BASE_URL = process.env.REACT_APP_BASE_URL
-  // change creds once auth is implemented
   const authUser = process.env.REACT_APP_USERNAME
   const authPassword = process.env.REACT_APP_PASSWORD
 
