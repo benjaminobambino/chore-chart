@@ -3,8 +3,6 @@ from rest_framework import serializers
 from .models import Household, Chore
 from accounts.models import CustomUser
 
-# class CustomUserSerializer(serializers.ModelSerializer):
-
 class UserSerializer(serializers.HyperlinkedModelSerializer):
   household = serializers.HyperlinkedRelatedField(
     required = False,
@@ -46,10 +44,6 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
       instance.save()
       return instance
 
-  # class Meta:
-  #   model = CustomUser
-  #   fields = ('id', 'username', 'email', 'admin', 'image', 'user_url', 'household', 'household_id', 'chores')
-
 class ChoreSerializer(serializers.HyperlinkedModelSerializer):
   household = serializers.HyperlinkedRelatedField(
     view_name = 'household_detail',
@@ -61,14 +55,7 @@ class ChoreSerializer(serializers.HyperlinkedModelSerializer):
     source = 'household'
   )
 
-  # doer = serializers.HyperlinkedRelatedField(
-  #   required = False,
-  #   view_name = 'user_detail',
-  #   read_only = True,
-  # )
-
   doer = UserSerializer(
-    # many = True,
     read_only = True
   )
 

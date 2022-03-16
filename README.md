@@ -16,7 +16,7 @@
   * Browser Router
   * useState
   * useEffect
-* Node
+* JWT Auth
 * JavaScript
 * Axios
 * CSS
@@ -25,7 +25,7 @@
 * HTML5
 ***
 ### ***Getting Started***
-#### The project backend REST API has been deployed on [Heroku](https://www.heroku.com/) with the frontend on [Netlify](https://chorechart.netlify.app/).
+#### The project backend REST API has been deployed on Heroku with the frontend on [Netlify](https://chorechart.netlify.app/).
 #### Simply create an account, log in, and enjoy a smoother chore experience in your household.
 #### A Trello board was used to keep track of development progress. It can be viewed [here](https://trello.com/b/SIpmHD30/chore-chart).
 ***
