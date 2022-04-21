@@ -15,7 +15,6 @@ import About from './misc/About';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
-  const [authUser, setAuthUser] = useState(null);
   const [user, setUser] = useState(null);
   const [household, setHousehold] = useState({});
   const [chores, setChores] = useState([]);
@@ -25,7 +24,6 @@ function App() {
 
   const handleLogOut = () => {
     setAuthenticated(false);
-    setAuthUser(null);
     setUser(null);
     setHousehold({});
     setChores([]);
@@ -59,7 +57,6 @@ function App() {
   const getUserInfo = async () => {
     await Client.get('/api/users/me').then((res) => {
       getUser(res.data.id);
-      setAuthUser(res.data);
       setAuthenticated(true);
     });
   };
@@ -106,7 +103,6 @@ function App() {
               <LogIn
                 {...props}
                 setAuthenticated={setAuthenticated}
-                setAuthUser={setAuthUser}
                 getUserInfo={getUserInfo}
                 user={user}
               />
