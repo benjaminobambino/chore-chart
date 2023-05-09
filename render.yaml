@@ -5,7 +5,7 @@ services:
   - type: web # valid values: https://render.com/docs/yaml-spec#type
     name: chore-chart-api
     env: docker # valid values: https://render.com/docs/yaml-spec#environment
-    dockerfilePath: Dockerfile.render
+    dockerfilePath: chore_api/Dockerfile.render
     plan: free # optional; defaults to starter
     numInstances: 0
     envVars:
