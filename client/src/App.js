@@ -55,7 +55,7 @@ function App() {
   };
 
   const getUserInfo = async () => {
-    await Client.get('/api/users/me').then((res) => {
+    await Client.get('/api/users/me/').then((res) => {
       getUser(res.data.id);
       setAuthenticated(true);
     });
